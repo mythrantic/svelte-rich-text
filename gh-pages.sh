@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the name of the new branch
-NEW_BRANCH="new-branch1"
+NEW_BRANCH="new-branch2"
 
 # Check if the branch already exists
 if git rev-parse --verify $NEW_BRANCH >/dev/null 2>&1; then
@@ -13,6 +13,18 @@ else
   echo "Creating new branch $NEW_BRANCH."
   git checkout -b $NEW_BRANCH
 fi
+
+# Stash any uncommitted changes before resetting
+echo "Stashing uncommitted changes..."
+git stash push -m "Stashing changes before resetting branch"
+
+# Reset the new branch to match the state of the original branch
+echo "Resetting branch to match the state of the original branch..."
+git reset --hard HEAD
+
+# Apply the stashed changes
+echo "Applying stashed changes..."
+git stash pop
 
 # Change to the project root directory
 PROJECT_ROOT="$(pwd)"
