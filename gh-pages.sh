@@ -1,13 +1,21 @@
 #!/bin/bash
 
 # Define the name of the new branch
-NEW_BRANCH="new-branch"
+NEW_BRANCH="new-branch1"
 
-# Create and switch to the new branch
-git checkout -b $NEW_BRANCH
+# Check if the branch already exists
+if git rev-parse --verify $NEW_BRANCH >/dev/null 2>&1; then
+  echo "Branch $NEW_BRANCH already exists, checking it out and resetting it."
+  git checkout $NEW_BRANCH
+  git reset --hard HEAD
+else
+  # Create and switch to the new branch
+  echo "Creating new branch $NEW_BRANCH."
+  git checkout -b $NEW_BRANCH
+fi
 
 # Perform the operations on the new branch
-# Exclude the .git directory and .env file from deletion 
+# Exclude the .git directory and .env file from deletion
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null
 
 # Check if the build directory exists and has contents
