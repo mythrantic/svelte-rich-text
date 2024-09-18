@@ -14,6 +14,17 @@ else
   git checkout -b $NEW_BRANCH
 fi
 
+# Run npm install to install dependencies
+echo "Running npm install..."
+npm install
+
+# Check if the build directory exists
+if [ ! -d "build" ]; then
+  echo "Build directory not found. Running build command..."
+  # Replace this with your actual build command
+  npm run build
+fi
+
 # Perform the operations on the new branch
 # Exclude the .git directory and .env file from deletion
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null
