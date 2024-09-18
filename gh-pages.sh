@@ -3,8 +3,16 @@
 # Define the name of the new branch
 NEW_BRANCH="new-branch8"
 
-echo "Branch $NEW_BRANCH already exists, checking it out and resetting it."
-git checkout $NEW_BRANCH
+# Check if the branch already exists
+if git rev-parse --verify $NEW_BRANCH >/dev/null 2>&1; then
+  echo "Branch $NEW_BRANCH already exists, checking it out and resetting it."
+  git checkout $NEW_BRANCH
+else
+  # Create and switch to the new branch
+  echo "Creating new branch $NEW_BRANCH."
+  git checkout -b $NEW_BRANCH
+fi
+
 git reset --hard HEAD
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null \
 && (mv build/* build/.* . 2>/dev/null || true) \
