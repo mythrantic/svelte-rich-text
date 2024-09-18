@@ -39,4 +39,4 @@ git add .
 git commit -m "Replace all contents with build folder contents except .env"
 
 # Optionally, push the new branch to the remote repository
-# git push origin $NEW_BRANCH
+git push origin $NEW_BRANCH
