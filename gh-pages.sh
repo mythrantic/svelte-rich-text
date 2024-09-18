@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the name of the new branch
-NEW_BRANCH="new-branch2"
+NEW_BRANCH="new-branch3"
 
 # Check if the branch already exists
 if git rev-parse --verify $NEW_BRANCH >/dev/null 2>&1; then
@@ -45,8 +45,9 @@ else
   exit 1
 fi
 
-# Perform the operations on the new branch
-# Exclude the .git directory and .env file from deletion
+sleep 5
+# Remove all files except those in the build directory, .env, and .git
+echo "Removing files except build directory contents, .env, and .git..."
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null
 
 # Check if the build directory exists and has contents
