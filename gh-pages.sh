@@ -14,15 +14,23 @@ else
   git checkout -b $NEW_BRANCH
 fi
 
-# Run npm install to install dependencies
-echo "Running npm install..."
-npm install
+# Change to the project root directory
+PROJECT_ROOT="$(pwd)"
+cd "$PROJECT_ROOT"
 
-# Check if the build directory exists
-if [ ! -d "build" ]; then
-  echo "Build directory not found. Running build command..."
-  # Replace this with your actual build command
-  npm run build
+# Run npm install and build
+if [ -f "package.json" ]; then
+  echo "Running npm install..."
+  npm install
+
+  # Check if the build directory exists
+  if [ ! -d "build" ]; then
+    echo "Build directory not found. Running build command..."
+    npm run build
+  fi
+else
+  echo "package.json not found in the current directory. Exiting."
+  exit 1
 fi
 
 # Perform the operations on the new branch
