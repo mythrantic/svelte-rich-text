@@ -10,6 +10,14 @@ find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" 
 && (mv build/* build/.* . 2>/dev/null || true) \
 && rmdir build 2>/dev/null
 
+
+sleep 2
+
+# for some reason i have todo it twice
+
+find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null \
+&& (mv build/* build/.* . 2>/dev/null || true) \
+&& rmdir build 2>/dev/null
 # Add changes to the new branch
 git add .
 
