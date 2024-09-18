@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the name of the new branch
-NEW_BRANCH="new-branch8"
+NEW_BRANCH="gh-pages"
 
 # Check if the branch already exists
 if git rev-parse --verify $NEW_BRANCH >/dev/null 2>&1; then
