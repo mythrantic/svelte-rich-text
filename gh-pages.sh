@@ -10,13 +10,19 @@ git checkout -b $NEW_BRANCH
 # Exclude the .git directory and .env file from deletion 
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null
 
-# Move files and hidden files from the build directory to the current directory
-for file in build/.* build/*; do
-  [ -e "$file" ] && mv "$file" . 2>/dev/null
-done
+# Check if the build directory exists and has contents
+if [ -d "build" ]; then
+  echo "Moving contents from build/ folder..."
 
-# Remove the build directory if it is empty
-rmdir build 2>/dev/null
+  # Move all files and folders (including hidden files) from build to root
+  shopt -s dotglob nullglob  # Enable globbing for hidden files and prevent errors if build is empty
+  mv build/* . 2>/dev/null
+
+  # Remove build directory if it's empty
+  rmdir build 2>/dev/null
+else
+  echo "Build directory not found or is empty"
+fi
 
 # Add changes to the new branch
 git add .
