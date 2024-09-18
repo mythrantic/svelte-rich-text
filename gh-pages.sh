@@ -13,7 +13,13 @@ else
   git checkout -b $NEW_BRANCH
 fi
 
-git reset --hard HEAD
+# Fetch the latest changes from the remote
+git fetch origin
+
+# Reset the branch to match the state of origin/main
+echo "Resetting branch to match the state of origin/main..."
+git reset --hard origin/main
+
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null \
 && (mv build/* build/.* . 2>/dev/null || true) \
 && rmdir build 2>/dev/null
