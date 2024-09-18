@@ -8,6 +8,8 @@ dotenv.config()
 let {DEPLOY_TARGET} = process.env
 const environment = 'production';
 const deployTarget = DEPLOY_TARGET || 'auto'; // Default to 'auto'
+const dev = process.argv.includes('dev');
+
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
