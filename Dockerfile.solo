@@ -20,7 +20,7 @@ WORKDIR /app
 # First install the dependencies (as they change less often)
 COPY .gitignore .gitignore
 COPY --from=builder /app/ .
-COPY --from=builder /app/yarn.lock ./yarn.lock
+COPY --from=builder /app/package.json ./package.json
 RUN yarn install
 
 # Build the project
