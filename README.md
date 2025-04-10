@@ -1,4 +1,4 @@
-# Valiant Rich Text Svelte Component
+# Rich Text Svelte Component
 
 ![valiantlynx logo](./static/valiantlynx.jpg)
 
