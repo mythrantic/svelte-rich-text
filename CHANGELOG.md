@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.0.1
+
+### Patch Changes
+
+- e7845b7: no major changes just migrated to svelte5 and tailwind 4 successfully. this is for testing
+
 ## 1.0.0
 
 ### Major Changes
