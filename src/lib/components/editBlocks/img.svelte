@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { updateData } from '../../utils/functions';
-	import { SvelteComponent, getContext, type ComponentType } from 'svelte';
+	import { getContext, type Component } from 'svelte';
 	import Input from '../extra/input.svelte';
 	import Upload from '../extra/upload.svelte';
 	export let content: { base64: string; name: string; caption: string };
 	export let id: string;
 	export let active = false;
-	const view: ComponentType<SvelteComponent<{ base64: string; caption: string }>> =
+	const view: Component<{ base64: string; caption: string }> =
 		getContext('Image');
 </script>
 

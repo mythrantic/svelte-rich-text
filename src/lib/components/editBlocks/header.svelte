@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { SvelteComponent, getContext, type ComponentType } from 'svelte';
+	import { getContext, type Component } from 'svelte';
 	import Select from '../extra/select.svelte';
 	import Textarea from '../extra/textarea.svelte';
 	import { updateData } from '../../utils/functions';
 	export let content: { text: string; level: 1 | 2 | 3 | 4 };
 	export let id: string;
 	export let active = false;
-	const view: ComponentType<SvelteComponent<{ text: string; level: 1 | 2 | 3 | 4 }>> =
+	const view: Component<{ text: string; level: 1 | 2 | 3 | 4 }> =
 		getContext('Header');
 </script>
 

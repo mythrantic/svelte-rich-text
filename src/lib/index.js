@@ -1,13 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { get } from 'svelte/store';
-import { data } from './utils/stores';
+import { store } from './utils/stores.svelte';
 export { default as ValiantRichText } from './components/core/main.svelte';
 
 export function getData() {
-	return get(data);
+	return store.data;
 }
 
 export function setData(newData) {
-	data.set(newData);
+	store.data = newData;
 }

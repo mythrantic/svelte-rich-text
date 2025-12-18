@@ -21,16 +21,8 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": false,
-		"baseUrl": ".",
 		"allowJs": true,
-		"checkJs": true,
-		"paths": {
-			"$lib/*": ["src/lib/*"],
-			"$lib": ["./src/lib"],
-			"$/*": ["./src/*"],
-			"$app": ["./node_modules/@sveltejs/kit/types"],
-			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"]
-		}
+		"checkJs": true
 	},
 	"include": [
 		"src/**/*.d.ts",

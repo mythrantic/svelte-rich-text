@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { data, workingBlock } from '../../utils/stores';
+	import { store } from '../../utils/stores.svelte';
 	import { onMount } from 'svelte';
 	import BlockWrapper from './blockWrapper.svelte';
 	import ToolBar from './toolBar.svelte';
@@ -19,27 +19,21 @@
 
 	function switchBlockState(event: MouseEvent) {
 		const id = traverseParent(event.target);
-		if (!id) workingBlock.set(null);
-		else if ($workingBlock == null || $workingBlock.id !== id)
-			workingBlock.set({ id, state: 'focused' });
-		else workingBlock.set({ id, state: 'editing' });
+		if (!id) store.workingBlock = null;
+		else if (store.workingBlock == null || store.workingBlock.id !== id)
+			store.workingBlock = { id, state: 'focused' };
+		else store.workingBlock = { id, state: 'editing' };
 	}
 
 	function move(up: boolean) {
-		data.update((prev) => {
-			const index = prev.findIndex((val) => val.id == $workingBlock.id);
-			const val = prev.splice(index, 1)[0];
-			prev.splice(up ? index - 1 : index + 1, 0, val);
-			return prev;
-		});
+		const index = store.data.findIndex((val) => val.id == store.workingBlock?.id);
+		const val = store.data.splice(index, 1)[0];
+		store.data.splice(up ? index - 1 : index + 1, 0, val);
 	}
 
 	function Delete() {
-		data.update((prev) => {
-			const newDataBlocks = prev.filter((element) => {
-				return element.id != $workingBlock.id;
-			});
-			return newDataBlocks;
+		store.data = store.data.filter((element) => {
+			return element.id != store.workingBlock?.id;
 		});
 	}
 
@@ -70,10 +64,10 @@
 	});
 </script>
 
-{#each $data as block}
+{#each store.data as block}
 	<div class="block">
-		<BlockWrapper dataBlock={block} />
-		{#if $workingBlock?.id == block.id && $workingBlock.state == 'focused'}
+		<BlockWrapper {block} />
+		{#if store.workingBlock?.id == block.id && store.workingBlock.state == 'focused'}
 			<div class="menu">
 				<DropDown
 					options={[

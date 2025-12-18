@@ -13,7 +13,7 @@
 			{value}
 			placeholder="Enter the {label.toLowerCase()}"
 			class="custom-input"
-			on:input={(e) => changeHandler(e.currentTarget.value)}
+			oninput={(e) => changeHandler(e.currentTarget.value)}
 		/>
 	</div>
 </div>

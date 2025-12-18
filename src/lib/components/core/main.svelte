@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { data } from '../../utils/stores.js';
-	import { type SvelteComponent, type ComponentType, setContext } from 'svelte';
+	import { store } from '../../utils/stores.svelte.js';
+	import { type Component, setContext } from 'svelte';
 	import ViewImage from '../viewBlocks/viewImage.svelte';
 	import ViewCode from '../viewBlocks/viewCode.svelte';
 	import ViewHeader from '../viewBlocks/viewHeader.svelte';
@@ -33,19 +33,12 @@
 	export let lh3 = '1.4';
 	export let lh4 = '1.5';
 	export let lbody = '1.6';
-	export let customImage: ComponentType<
-		SvelteComponent<{ base64: string; name: string; caption: string }>
-	> = ViewImage;
-	export let customCode: ComponentType<SvelteComponent<{ text: string; lang: languages }>> =
-		ViewCode;
-	export let customList: ComponentType<
-		SvelteComponent<{ items: string[]; type: 'ordered' | 'unordered' }>
-	> = ViewList;
-	export let customHeader: ComponentType<SvelteComponent<{ text: string; level: 1 | 2 | 3 | 4 }>> =
-		ViewHeader;
-	export let customParagraph: ComponentType<SvelteComponent<{ text: string }>> = ViewParagraph;
-	export let customQuote: ComponentType<SvelteComponent<{ text: string; owner: string }>> =
-		ViewQuote;
+	export let customImage: Component<{ base64: string; name: string; caption: string }> = ViewImage;
+	export let customCode: Component<{ text: string; lang: languages }> = ViewCode;
+	export let customList: Component<{ items: string[]; type: 'ordered' | 'unordered' }> = ViewList;
+	export let customHeader: Component<{ text: string; level: 1 | 2 | 3 | 4 }> = ViewHeader;
+	export let customParagraph: Component<{ text: string }> = ViewParagraph;
+	export let customQuote: Component<{ text: string; owner: string }> = ViewQuote;
 		export let codeBlockLanguages: languages[] = [
     'actionscript',
     'angular', // For Angular templates
@@ -119,7 +112,7 @@
 	setContext('Quote', customQuote);
 	setContext('languages', codeBlockLanguages);
 
-	data.set(initialData);
+	store.data = initialData;
 </script>
 
 <div

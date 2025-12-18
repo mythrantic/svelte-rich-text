@@ -1,6 +1,6 @@
-import { writable } from 'svelte/store';
 import type { dataBlock } from './consts.js';
 
-export const data = writable<dataBlock[]>([]);
+// Svelte 5 reactive state
+export let data = $state<dataBlock[]>([]);
 
-export const workingBlock = writable<{ state: 'focused' | 'editing'; id: string }>(null);
+export let workingBlock = $state<{ state: 'focused' | 'editing'; id: string } | null>(null);

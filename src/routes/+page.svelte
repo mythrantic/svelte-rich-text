@@ -25,7 +25,7 @@
 		]}
 	/>
 	<button
-		on:click={() => {
+		onclick={() => {
 			console.log(getData());
 		}}>save</button
 	>

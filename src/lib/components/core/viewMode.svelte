@@ -1,5 +1,5 @@
 <script>
-	import { data } from '../../utils/stores';
+	import { store } from '../../utils/stores.svelte';
 	import ViewCode from '../viewBlocks/viewCode.svelte';
 	import ViewHeader from '../viewBlocks/viewHeader.svelte';
 	import ViewImage from '../viewBlocks/viewImage.svelte';
@@ -9,7 +9,7 @@
 	import ViewSpace from '../viewBlocks/viewSpace.svelte';
 </script>
 
-{#each $data as block}
+{#each store.data as block}
 	{#if block.name == 'code'}
 		<ViewCode {...block.data} />
 	{:else if block.name == 'header'}

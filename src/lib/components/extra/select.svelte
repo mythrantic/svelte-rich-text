@@ -28,7 +28,7 @@
 		--border-focused={'2px solid var(--secondaryColor)'}
 		--border-hover={'2px solid var(--secondaryColor)'}
 		--clear-icon-color={'var(--fontColor)'}
-		on:change={(event) => {
+		onchange={(event) => {
 			changeHandler(event.detail);
 		}}
 	/>

@@ -9,7 +9,7 @@
 	{#if fallback}
 		<img src='/default.jpg' alt="favicon" />
 	{:else}
-		<img src={base64} alt="sorry {name} image does not exist" on:error={() => (fallback = true)} />
+		<img src={base64} alt="sorry {name} image does not exist" onerror={() => (fallback = true)} />
 	{/if}
 	<span>{caption}</span>
 </div>

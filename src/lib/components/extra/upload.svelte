@@ -14,7 +14,7 @@
 		id="custom-input"
 		class="custom-input"
 		accept={fileType}
-		on:change={(e) => {
+		onchange={(e) => {
 			const file = e.currentTarget.files[0];
 			if (file) {
 				const reader = new FileReader();

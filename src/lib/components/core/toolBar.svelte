@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { blocks, dataBlock } from '../../utils/consts';
-	import type { ComponentType, SvelteComponent } from 'svelte';
+	import type { Component } from 'svelte';
 	import CodeIcon from '../icons/codeIcon.svelte';
 	import HeaderIcon from '../icons/headerIcon.svelte';
 	import ImageIcon from '../icons/imageIcon.svelte';
@@ -11,7 +11,7 @@
 	import CloseIcon from '../icons/closeIcon.svelte';
 	import SpaceIcon from '../icons/spaceIcon.svelte';
 	import shortUUID from 'short-uuid';
-	import { data, workingBlock } from '../../utils/stores';
+	import { store } from '../../utils/stores.svelte';
 	import { fade } from 'svelte/transition';
 	import { elasticIn } from 'svelte/easing';
 	function add(list: dataBlock[], id: string, name: blocks) {
@@ -36,7 +36,7 @@
 		}
 	}
 
-	const options: Map<blocks, ComponentType<SvelteComponent>> = new Map([
+	const options: Map<blocks, Component> = new Map([
 		['code', CodeIcon],
 		['image', ImageIcon],
 		['quote', QuoteIcon],
@@ -52,7 +52,7 @@
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 
-	<span on:click={() => (toggle = !toggle)} class="control">
+	<span onclick={() => (toggle = !toggle)} class="control">
 		{#if toggle}
 			<CloseIcon />
 		{:else}
@@ -68,16 +68,14 @@
 					in:fade|global={{ delay: 80 * index, duration: 300, easing: elasticIn }}
 					out:fade|global={{ delay: 80 * (6 - index), duration: 300, easing: elasticIn }}
 					data-label={'add ' + option[0]}
-					class="option"
-					on:click|stopPropagation={() => {
-						const id = shortUUID().generate();
-						data.update((prev) => {
-							add(prev, id, option[0]);
-							toggle = true;
-							return prev;
-						});
-						workingBlock.set({ id, state: 'editing' });
-					}}
+				class="option"
+				onclick={(e) => {
+					e.stopPropagation();
+					const id = shortUUID().generate();
+					add(store.data, id, option[0]);
+					toggle = true;
+					store.workingBlock = { id, state: 'editing' };
+				}}
 				>
 					<svelte:component this={option[1]} />
 				</span>

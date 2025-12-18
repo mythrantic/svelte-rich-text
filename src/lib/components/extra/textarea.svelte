@@ -14,7 +14,7 @@
 		class="editableArea"
 		contenteditable="plaintext-only"
 		bind:textContent
-		on:input={(e) => {
+		oninput={(e) => {
 			changeHandler(e.currentTarget.textContent);
 		}}
 	>

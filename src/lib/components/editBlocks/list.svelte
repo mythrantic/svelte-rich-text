@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SvelteComponent, getContext, type ComponentType } from 'svelte';
+	import { getContext, type Component } from 'svelte';
 	import Select from '../extra/select.svelte';
 	import { updateData } from '../../utils/functions';
 	import Textarea from '../extra/textarea.svelte';
@@ -9,7 +9,7 @@
 	export let content: { items: string[]; type: 'ordered' | 'unordered' };
 	export let id: string;
 	export let active = false;
-	const view: ComponentType<SvelteComponent<{ items: string[]; type: 'ordered' | 'unordered' }>> =
+	const view: Component<{ items: string[]; type: 'ordered' | 'unordered' }> =
 		getContext('List');
 </script>
 
@@ -48,7 +48,8 @@
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<span
 						class="control"
-						on:click|stopPropagation={() => {
+						onclick={(e) => {
+							e.stopPropagation();
 							updateData(id, (el) => {
 								if (el.name == 'list') el.data.items.splice(index, 1);
 							});
@@ -61,7 +62,8 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<span
 				class="control"
-				on:click|stopPropagation={() => {
+				onclick={(e) => {
+					e.stopPropagation();
 					updateData(id, (el) => {
 						if (el.name == 'list') el.data.items.push('');
 					});

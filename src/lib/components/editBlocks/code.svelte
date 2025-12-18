@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SvelteComponent, getContext, type ComponentType } from 'svelte';
+	import { getContext, type Component } from 'svelte';
 	import Select from '../extra/select.svelte';
 	import type { languages } from '../../utils/consts';
 	import { updateData } from '../../utils/functions';
@@ -7,8 +7,8 @@
 	export let content: { text: string; lang: languages };
 	export let id: string;
 	export let active = false;
-	const languages = getContext('languages') as languages[];
-	const view: ComponentType<SvelteComponent<{ text: string; lang: languages }>> =
+	const languagesList = getContext('languages') as languages[];
+	const view: Component<{ text: string; lang: languages }> =
 		getContext('Code');
 	// *TODO: rm the autoHighlight (code splitting)
 </script>
@@ -18,7 +18,7 @@
 		<Select
 			label="Code language"
 			preSelected={{ label: content.lang, value: content.lang }}
-			elements={languages.map((el) => ({ value: el, label: el }))}
+			elements={languagesList.map((el) => ({ value: el, label: el }))}
 			changeHandler={(detail) => {
 				updateData(id, (el) => {
 					if (el.name == 'code') el.data.lang = detail.value;

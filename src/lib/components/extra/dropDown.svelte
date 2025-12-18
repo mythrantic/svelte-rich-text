@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { ComponentType, SvelteComponent } from 'svelte';
+	import type { Component } from 'svelte';
 	import MenuIcon from '../icons/menuIcon.svelte';
 	import CloseIcon from '../icons/closeIcon.svelte';
-	export let options: { icon: ComponentType<SvelteComponent>; label: string; cb: () => void }[] =
-		[];
+	export let options: { icon: Component; label: string; cb: () => void }[] = [];
 	let dialog: HTMLDialogElement = null;
 </script>
 
@@ -11,7 +10,8 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <span
 	class="openMenu"
-	on:click|stopPropagation={() => {
+	onclick={(e) => {
+		e.stopPropagation();
 		dialog.showModal();
 	}}
 >
@@ -21,7 +21,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
-	on:click={(e) => {
+	onclick={(e) => {
 		e.stopPropagation();
 	}}
 >
@@ -34,7 +34,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				class="option"
-				on:click={() => {
+				onclick={() => {
 					option.cb();
 					dialog.close();
 				}}
@@ -47,7 +47,8 @@
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			class="option"
-			on:click|stopPropagation={() => {
+			onclick={(e) => {
+				e.stopPropagation();
 				dialog.close();
 			}}
 		>

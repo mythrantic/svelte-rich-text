@@ -53,7 +53,7 @@
         <div id="padding-container">
             <div id="title-bar">
                 <span id="title">{lang}</span>
-                <button id="copy-button" on:click|stopPropagation={copyCode}>
+                <button id="copy-button" onclick={(e) => { e.stopPropagation(); copyCode(); }}>
                     {#if !copyStatement}
                         <CopyIcon />
                     {:else}

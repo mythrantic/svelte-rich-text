@@ -1,16 +1,17 @@
 /// <reference types="@sveltejs/kit" />
 /// <reference lib="webworker" />
 
-let self;
-
 import { build, files, version } from '$service-worker';
+
+// @ts-ignore
+const sw = /** @type {ServiceWorkerGlobalScope} */ (self);
 
 const CACHE = `cache=${version}`;
 
 const ASSETS = [...build, ...files];
 
 // install the service worker
-self.addEventListener('install', (event) => {
+sw.addEventListener('install', (event) => {
 	async function addFilesToCache() {
 		const cache = await caches.open(CACHE);
 		await cache.addAll(ASSETS);
@@ -20,7 +21,7 @@ self.addEventListener('install', (event) => {
 });
 
 // activate the service worker
-self.addEventListener('activate', (event) => {
+sw.addEventListener('activate', (event) => {
 	async function deleteOldCaches() {
 		for (const key of await caches.keys()) {
 			if (key !== CACHE) {
@@ -32,7 +33,7 @@ self.addEventListener('activate', (event) => {
 });
 
 // listen to fetch event
-self.addEventListener('fetch', (event) => {
+sw.addEventListener('fetch', (event) => {
 	if (event.request.method !== 'GET') return;
 
 	async function response() {
@@ -73,9 +74,9 @@ self.addEventListener('fetch', (event) => {
 	event.respondWith(response());
 });
 
-self.addEventListener('message', (event) => {
+sw.addEventListener('message', (event) => {
 	if (event.data && event.data.type == 'SKIP_WAITING') {
-		self.skipWaiting();
+		sw.skipWaiting();
 	}
 });
 
@@ -93,11 +94,11 @@ self.addEventListener('message', (event) => {
 
 // Background Fetch API provides a method for managing downloads that may take a significant amount of time such as
 // movies, audio files, and software.
-if (!('BackgroundFetchManager' in self)) {
+if (!('BackgroundFetchManager' in sw)) {
 	// Provide fallback downloading.
 }
 
-self.addEventListener(
+sw.addEventListener(
 	'notificationclick',
 	(event) => {
 		event.notification.close();
@@ -109,7 +110,7 @@ self.addEventListener(
 		} else {
 			// User selected (e.g., clicked in) the main body of notification.
 			console.log('open');
-			const clients = self.clients;
+			const clients = sw.clients;
 			clients.openWindow('/desktop');
 		}
 	},

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { updateData } from '../../utils/functions';
-	import { SvelteComponent, getContext, type ComponentType } from 'svelte';
+	import { getContext, type Component } from 'svelte';
 	import Textarea from '../extra/textarea.svelte';
 	export let content: { text: string };
 	export let active = false;
 	export let id: string;
-	export let view: ComponentType<SvelteComponent<{ text: string }>> = getContext('Paragraph');
+	export let view: Component<{ text: string }> = getContext('Paragraph');
 	// *TODO : use custom paragraph
 </script>
 

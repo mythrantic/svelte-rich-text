@@ -6,37 +6,37 @@
 	import List from '../editBlocks/list.svelte';
 	import Paragraph from '../editBlocks/paragraph.svelte';
 	import Quote from '../editBlocks/quote.svelte';
-	import { workingBlock } from '../../utils/stores.js';
+	import { store } from '../../utils/stores.svelte.js';
 	import Space from '../editBlocks/space.svelte';
-	export let dataBlock: dataBlock;
-	$: active = $workingBlock && $workingBlock.state == 'editing' && $workingBlock.id == dataBlock.id;
+	export let block: dataBlock;
+	$: active = store.workingBlock && store.workingBlock.state == 'editing' && store.workingBlock.id == block.id;
 	$: focused =
-		$workingBlock && $workingBlock.state == 'focused' && $workingBlock.id == dataBlock.id;
+		store.workingBlock && store.workingBlock.state == 'focused' && store.workingBlock.id == block.id;
 </script>
 
 <div
 	class="blockWrapper"
 	class:focused
 	class:editing={active}
-	data-blockid={dataBlock.id}
-	data-blocktype={dataBlock.name}
+	data-blockid={block.id}
+	data-blocktype={block.name}
 >
-	{#if dataBlock.name == 'header'}
-		<Header id={dataBlock.id} content={dataBlock.data} {active} />
-	{:else if dataBlock.name == 'code'}
-		<Code content={dataBlock.data} id={dataBlock.id} {active} />
-	{:else if dataBlock.name == 'image'}
-		<Img id={dataBlock.id} content={dataBlock.data} {active} />
-	{:else if dataBlock.name == 'list'}
-		<List id={dataBlock.id} content={dataBlock.data} {active} />
-	{:else if dataBlock.name == 'paragraph'}
-		<Paragraph id={dataBlock.id} content={dataBlock.data} {active} />
-	{:else if dataBlock.name == 'quote'}
-		<Quote id={dataBlock.id} content={dataBlock.data} {active} />
+	{#if block.name == 'header'}
+		<Header id={block.id} content={block.data} {active} />
+	{:else if block.name == 'code'}
+		<Code content={block.data} id={block.id} {active} />
+	{:else if block.name == 'image'}
+		<Img id={block.id} content={block.data} {active} />
+	{:else if block.name == 'list'}
+		<List id={block.id} content={block.data} {active} />
+	{:else if block.name == 'paragraph'}
+		<Paragraph id={block.id} content={block.data} {active} />
+	{:else if block.name == 'quote'}
+		<Quote id={block.id} content={block.data} {active} />
 	{:else}
-		<Space id={dataBlock.id} content={dataBlock.data} {active} />
+		<Space id={block.id} content={block.data} {active} />
 	{/if}
-	<span class="blockType">{dataBlock.name}</span>
+	<span class="blockType">{block.name}</span>
 </div>
 
 <style>
