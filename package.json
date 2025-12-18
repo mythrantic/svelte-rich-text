@@ -1,5 +1,5 @@
 {
-	"name": "@valiantlynx/svelte-rich-text",
+	"name": "@mythrantic/svelte-rich-text",
 	"version": "0.2.8",
 	"publishConfig": {
 		"access": "public",
@@ -11,9 +11,6 @@
 	"maintainers": [
 		"valiantlynx <valiantlynxz@gmail.com> (https://www.valiantlynx.com/)"
 	],
-	"engines": {
-		"node": ">=16.14"
-	},
 	"keywords": [
 		"sveltekit",
 		"rich text editor",
@@ -22,11 +19,20 @@
 		"svelte",
 		"blocks"
 	],
-	"author": "valiantlynx",
+	"author": {
+		"name": "valiantlynx",
+		"email": "valiantlynxz@gmail.com"
+	},
+	"contributors": [
+		{
+			"name": "valiantlynx",
+			"email": "valiantlynxz@gmail.com"
+		}
+	],
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/valiantlynx/svelte-rich-text.git"
+		"url": "git+https://github.com/mythrantic/svelte-rich-text.git"
 	},
 	"scripts": {
 		"dev": "vite --host",
