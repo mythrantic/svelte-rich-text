@@ -1,7 +1,0 @@
----
-- hosts: ec2_instances
-  roles:
-    - common
-    - docker
-    - ec2-swap
-    - docker_deploy
