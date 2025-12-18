@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.0.0
+
+### Major Changes
+
+- 466949b: upgraded the package to svelte 5 and tailwind 4
+
 ## 0.2.8
 
 ### Patch Changes
