@@ -72,6 +72,7 @@
 		"@sveltejs/kit": "^2.10.0",
 		"@sveltejs/package": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tailwindcss/postcss": "^4.0.0",
 		"@types/eslint": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
@@ -89,7 +90,6 @@
 		"svelte": "^5.14.6",
 		"svelte-check": "^4.0.0",
 		"svelte-select": "^5.7.0",
-		"@tailwindcss/postcss": "^4.0.0",
 		"tailwindcss": "^4.0.0",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
@@ -106,5 +106,31 @@
 				"./dist/index.d.ts"
 			]
 		}
+	},
+	"dependencies": {
+		"@floating-ui/dom": "^1.7.4",
+		"@lucide/svelte": "^0.562.0",
+		"@tiptap/core": "^3.13.0",
+		"@tiptap/extension-bubble-menu": "^3.13.0",
+		"@tiptap/extension-code-block-lowlight": "^3.13.0",
+		"@tiptap/extension-highlight": "^3.13.0",
+		"@tiptap/extension-image": "^3.13.0",
+		"@tiptap/extension-list": "^3.13.0",
+		"@tiptap/extension-mathematics": "^3.13.0",
+		"@tiptap/extension-subscript": "^3.13.0",
+		"@tiptap/extension-superscript": "^3.13.0",
+		"@tiptap/extension-table": "^3.13.0",
+		"@tiptap/extension-text-align": "^3.13.0",
+		"@tiptap/extension-text-style": "^3.13.0",
+		"@tiptap/extension-typography": "^3.13.0",
+		"@tiptap/extensions": "^3.13.0",
+		"@tiptap/markdown": "^3.13.0",
+		"@tiptap/pm": "^3.13.0",
+		"@tiptap/starter-kit": "^3.13.0",
+		"@tiptap/suggestion": "^3.13.0",
+		"katex": "^0.16.27",
+		"lowlight": "^3.3.0",
+		"svelte-tiptap": "^3.0.1",
+		"tiptap-extension-auto-joiner": "^0.1.3"
 	}
 }
