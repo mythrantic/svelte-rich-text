@@ -174,6 +174,9 @@ importers:
       vite:
         specifier: ^6.0.0
         version: 6.4.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1)
+      vite-plugin-devtools-json:
+        specifier: ^1.0.0
+        version: 1.0.0(vite@6.4.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1))
       vitest:
         specifier: ^3.1.1
         version: 3.1.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1)
@@ -2568,6 +2571,10 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
@@ -2576,6 +2583,11 @@ packages:
     resolution: {integrity: sha512-V+IxPAE2FvXpTCHXyNem0M+gWm6J7eRyWPR6vYoG/Gl+IscNOjXzztUhimQgTxaAoUoj40Qqimaa0NLIOOAH4w==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
+
+  vite-plugin-devtools-json@1.0.0:
+    resolution: {integrity: sha512-MobvwqX76Vqt/O4AbnNMNWoXWGrKUqZbphCUle/J2KXH82yKQiunOeKnz/nqEPosPsoWWPP9FtNuPBSYpiiwkw==}
+    peerDependencies:
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
 
   vite@6.4.1:
     resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
@@ -5046,6 +5058,8 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
+  uuid@11.1.0: {}
+
   uuid@8.3.2: {}
 
   vite-node@3.1.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1):
@@ -5068,6 +5082,11 @@ snapshots:
       - terser
       - tsx
       - yaml
+
+  vite-plugin-devtools-json@1.0.0(vite@6.4.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1)):
+    dependencies:
+      uuid: 11.1.0
+      vite: 6.4.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1)
 
   vite@6.4.1(@types/node@22.5.5)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.5.1):
     dependencies:
