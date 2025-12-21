@@ -31,6 +31,12 @@
 	import Link from './menus/Link.svelte';
 	import slashcommand from '../extensions/slash-command/slashcommand.js';
 	import SlashCommandList from './components/SlashCommandList.svelte';
+	
+	import { EdraToolBar } from './index.js';
+	import EdraToolBarIcon from './components/ToolBarIcon.svelte';
+	import { isMac } from '../utils.js';
+	import DragHandle from '../components/DragHandle.svelte';
+	import Bold from '@lucide/svelte/icons/bold';
 
 	const lowlight = createLowlight(all);
 
@@ -48,27 +54,31 @@
 	}: EdraEditorProps = $props();
 
 	onMount(() => {
+		// Always include all extensions to maintain schema compatibility
+		// but they'll respect the editable prop internally
+		const extensions = [
+			CodeBlockLowlight.configure({
+				lowlight
+			}).extend({
+				addNodeView() {
+					return SvelteNodeViewRenderer(CodeBlock);
+				}
+			}),
+			ImagePlaceholder(ImagePlaceholderComp),
+			ImageExtended(ImageExtendedComp),
+			VideoPlaceholder(VideoPlaceHolderComp),
+			VideoExtended(VideoExtendedComp),
+			AudioPlaceholder(AudioPlaceHolderComp),
+			AudioExtended(AudioExtendedComp),
+			IFramePlaceholder(IFramePlaceHolderComp),
+			IFrameExtended(IFrameExtendedComp),
+			slashcommand(SlashCommandList)
+		];
+
 		editor = initEditor(
 			element,
 			content,
-			[
-				CodeBlockLowlight.configure({
-					lowlight
-				}).extend({
-					addNodeView() {
-						return SvelteNodeViewRenderer(CodeBlock);
-					}
-				}),
-				ImagePlaceholder(ImagePlaceholderComp),
-				ImageExtended(ImageExtendedComp),
-				VideoPlaceholder(VideoPlaceHolderComp),
-				VideoExtended(VideoExtendedComp),
-				AudioPlaceholder(AudioPlaceHolderComp),
-				AudioExtended(AudioExtendedComp),
-				IFramePlaceholder(IFramePlaceHolderComp),
-				IFrameExtended(IFrameExtendedComp),
-				slashcommand(SlashCommandList)
-			],
+			extensions,
 			{
 				onUpdate,
 				onTransaction(props) {
@@ -91,6 +101,28 @@
 	<TableCol {editor} />
 	<TableRow {editor} />
 {/if}
+
+{#if editor && !editor.isDestroyed && editor.isEditable}
+		<EdraToolBar {editor} />
+
+		<!-- Customized Edra toolbar -->
+		<EdraToolBar {editor}>
+			<div class="border-r px-3 text-sm">Customized toolbar</div>
+			<EdraToolBarIcon
+				command={{
+					icon: Bold,
+					name: 'bold',
+					tooltip: 'Bold',
+					shortCut: isMac ? '⌘+B' : 'Ctrl+B',
+					onClick: (editor) => {
+						editor.chain().focus().toggleBold().run();
+					}
+				}}
+				{editor}
+			/>
+		</EdraToolBar>
+		<DragHandle {editor} />
+	{/if}
 <div
 	bind:this={element}
 	role="button"
