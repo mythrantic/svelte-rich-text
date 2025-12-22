@@ -28,9 +28,36 @@
 	}
 </script>
 
-<h1 class="mb-6 mt-12 text-center text-3xl font-bold">Simple Demo</h1>
-<div class="bg-background z-50 mx-auto mt-12 size-full max-w-5xl rounded-md border border-dashed">
-	<div class="h-[30rem] overflow-y-scroll border pr-2 pl-6">
+<h1 class="demo-title">Simple Demo</h1>
+<div class="demo-wrapper">
+	<div class="editor-container">
 		<EdraEditor bind:editor {content} {onUpdate} />
 	</div>
 </div>
+
+<style>
+	.demo-title {
+		margin-bottom: 1.5rem;
+		margin-top: 3rem;
+		text-align: center;
+		font-size: 1.875rem;
+		font-weight: 700;
+	}
+
+	.demo-wrapper {
+		background-color: var(--color-background, #ffffff);
+		z-index: 50;
+		margin: 3rem auto;
+		width: 100%;
+		max-width: 80rem;
+		border-radius: 0.375rem;
+		border: 1px dashed;
+	}
+
+	.editor-container {
+		overflow-y: scroll;
+		border: 1px solid;
+		padding-right: 0.5rem;
+		padding-left: 1.5rem;
+	}
+</style>
