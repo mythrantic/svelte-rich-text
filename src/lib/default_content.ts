@@ -10,7 +10,7 @@ export default {
 			content: [
 				{
 					type: 'text',
-					text: 'Welcome to Edra'
+					text: 'Welcome to ValiantRichText'
 				}
 			]
 		},
@@ -22,7 +22,7 @@ export default {
 			content: [
 				{
 					type: 'text',
-					text: 'Edra is the best '
+					text: 'ValiantRichText is the best '
 				},
 				{
 					type: 'text',

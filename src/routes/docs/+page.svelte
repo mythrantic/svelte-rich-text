@@ -1,6 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
-	import { EdraEditor } from '$lib/components/edra/headless/index.js';
+	import { ValiantRichText } from '$lib/index.js';
 	import defaultContent from '$lib/default_content.js';
 
 	// Editor states
@@ -31,7 +31,7 @@
 <h1 class="demo-title">Simple Demo</h1>
 <div class="demo-wrapper">
 	<div class="editor-container">
-		<EdraEditor bind:editor {content} {onUpdate} />
+		<ValiantRichText bind:editor {content} {onUpdate} />
 	</div>
 </div>
 
