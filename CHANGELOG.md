@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.1.0
+
+### Minor Changes
+
+- 3a8ebd0: changed core renderer
+
 ## 1.0.1
 
 ### Patch Changes
