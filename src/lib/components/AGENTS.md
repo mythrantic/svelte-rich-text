@@ -1,0 +1,1 @@
+the edra folder is for rich text editor mcp. it not part of the project currently. and more of a feature idea in progress.
