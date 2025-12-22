@@ -1,11 +1,6 @@
 <script>
-	// custom
-	import Main from '$lib/components/core/main.svelte';
-	import { ValiantRichText, getData } from '$lib/index';
-
-	// mdvex
 	import { browser } from '$app/environment';
-	import { EdraEditor, EdraToolBar } from '$lib/components/edra/headless/index.js';
+	import { ValiantRichText } from '$lib/index.js';
 	import defaultContent from '$lib/default_content.js';
 
 	// Editor states
@@ -61,14 +56,14 @@
 			<div class="demo-editor">
 				<h3>Interactive Editor</h3>
 				<div class="editor-wrapper">
-					<EdraEditor bind:editor {content} {onUpdate} editable={true} />
+					<ValiantRichText bind:editor {content} {onUpdate} editable={true} />
 				</div>
 			</div>
 
 			<div class="demo-preview">
 				<h3>Read-Only Preview</h3>
 				<div class="preview-wrapper">
-					<EdraEditor {content} editable={false} />
+					<ValiantRichText {content} editable={false} />
 				</div>
 			</div>
 		</div>
