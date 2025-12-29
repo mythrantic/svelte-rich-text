@@ -66,7 +66,7 @@
 		"@changesets/cli": "^2.29.8",
 		"@fontsource/fira-mono": "^5.0.12",
 		"@neoconfetti/svelte": "^2.2.1",
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/kit": "^2.10.0",
