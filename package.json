@@ -85,7 +85,7 @@
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
-		"publint": "^0.1.9",
+		"publint": "^0.3.16",
 		"short-uuid": "^4.2.2",
 		"svelte": "^5.14.6",
 		"svelte-check": "^4.0.0",
