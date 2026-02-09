@@ -81,6 +81,9 @@
 		</div>
 	</section>
 
+<div id="samlet-chat"></div>
+
+
 	<!-- Footer -->
 	<footer class="footer">
 		<div class="footer-content">
