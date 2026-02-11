@@ -1,3 +1,5 @@
+[![Open in Coder](https://coder.valiantlynx.com/open-in-coder.svg)](https://coder.valiantlynx.com/templates/docker/workspace?param.git_repo=git@github.com:mythrantic/svelte-rich-text.git)
+
 # Valiant Rich Text Svelte Component
 
 ![valiantlynx logo](./static/valiantlynx.jpg)
