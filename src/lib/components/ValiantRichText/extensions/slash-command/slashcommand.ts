@@ -1,4 +1,4 @@
-import { Editor, Extension } from '@tiptap/core';
+import { Editor, Extension, type Range } from '@tiptap/core';
 import Suggestion, { type SuggestionProps, type SuggestionKeyDownProps } from '@tiptap/suggestion';
 import { PluginKey } from '@tiptap/pm/state';
 import { computePosition, flip, offset, autoUpdate, type Placement } from '@floating-ui/dom';
@@ -41,6 +41,15 @@ export default (menuList: Component<any, any, ''>): Extension =>
 			document.body.appendChild(popup.element);
 		},
 
+		onDestroy() {
+			if (popup.element) {
+				popup.element.remove();
+				popup.element = null;
+				popup.cleanup = null;
+				popup.isVisible = false;
+			}
+		},
+
 		addProseMirrorPlugins() {
 			return [
 				Suggestion({
@@ -58,26 +67,9 @@ export default (menuList: Component<any, any, ''>): Extension =>
 						return isValidAfterContent;
 					},
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-					command: ({ editor, props }: { editor: Editor; props: any }) => {
-						const { view, state } = editor;
-						const { $head, $from } = view.state.selection;
-
-						try {
-							const end = $from.pos;
-							const from = $head?.nodeBefore
-								? end -
-									($head.nodeBefore.text?.substring($head.nodeBefore.text?.indexOf('/')).length ??
-										0)
-								: $from.start();
-
-							const tr = state.tr.deleteRange(from, end);
-							view.dispatch(tr);
-						} catch (error) {
-							console.error(error);
-						}
-
+					command: ({ editor, range, props }: { editor: Editor; range: Range; props: any }) => {
+						editor.chain().focus().deleteRange(range).run();
 						props.onClick(editor);
-						view.focus();
 					},
 					items: ({ query }: { query: string }) => {
 						const withFilteredCommands = GROUPS.map((group) => ({
@@ -211,9 +203,8 @@ export default (menuList: Component<any, any, ''>): Extension =>
 									popup.isVisible = true;
 								}
 
-								if (props.event.key === 'Enter') return true;
+								if (props.event.key === 'ArrowUp' || props.event.key === 'ArrowDown' || props.event.key === 'Tab' || props.event.key === 'Enter') return true;
 
-								// return component.ref?.onKeyDown(props);
 								return false;
 							},
 
