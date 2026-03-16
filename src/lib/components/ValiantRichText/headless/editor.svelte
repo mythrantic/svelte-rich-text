@@ -6,6 +6,7 @@
 	import '../editor.css';
 	import './style.css';
 	import '../onedark.css';
+	import '../themes.css';
 	import { ImagePlaceholder } from '../extensions/image/ImagePlaceholder.js';
 	import ImagePlaceholderComp from './components/ImagePlaceholder.svelte';
 	import { ImageExtended } from '../extensions/image/ImageExtended.js';
@@ -31,12 +32,8 @@
 	import Link from './menus/Link.svelte';
 	import slashcommand from '../extensions/slash-command/slashcommand.js';
 	import SlashCommandList from './components/SlashCommandList.svelte';
-	
 	import { EdraToolBar } from './index.js';
-	import EdraToolBarIcon from './components/ToolBarIcon.svelte';
-	import { isMac } from '../utils.js';
 	import DragHandle from '../components/DragHandle.svelte';
-	import Bold from '@lucide/svelte/icons/bold';
 
 	const lowlight = createLowlight(all);
 
@@ -50,8 +47,14 @@
 		content,
 		onUpdate,
 		autofocus = false,
-		class: className
+		class: className,
+		theme = 'default',
+		mode = 'light'
 	}: EdraEditorProps = $props();
+
+	const themeClass = $derived(
+		theme === 'inherit' ? 'edra-theme-inherit' : `edra-theme-${theme}${mode === 'dark' ? ' dark' : ''}`
+	);
 
 	onMount(() => {
 		// Always include all extensions to maintain schema compatibility
@@ -96,42 +99,28 @@
 	});
 </script>
 
-{#if editor && !editor.isDestroyed}
-	<Link {editor} />
-	<TableCol {editor} />
-	<TableRow {editor} />
-{/if}
+<div class={`edra-wrapper ${themeClass}`}>
+	{#if editor && !editor.isDestroyed}
+		<Link {editor} />
+		<TableCol {editor} />
+		<TableRow {editor} />
+	{/if}
 
-{#if editor && !editor.isDestroyed && editor.isEditable}
+	{#if editor && !editor.isDestroyed && editor.isEditable}
 		<EdraToolBar {editor} />
-
-		<!-- Customized Edra toolbar -->
-		<EdraToolBar {editor}>
-			<div class="border-r px-3 text-sm">Customized toolbar</div>
-			<EdraToolBarIcon
-				command={{
-					icon: Bold,
-					name: 'bold',
-					tooltip: 'Bold',
-					shortCut: isMac ? '⌘+B' : 'Ctrl+B',
-					onClick: (editor) => {
-						editor.chain().focus().toggleBold().run();
-					}
-				}}
-				{editor}
-			/>
-		</EdraToolBar>
 		<DragHandle {editor} />
 	{/if}
-<div
-	bind:this={element}
-	role="button"
-	tabindex="0"
-	onclick={(event) => focusEditor(editor, event)}
-	onkeydown={(event) => {
-		if (event.key === 'Enter' || event.key === ' ') {
-			focusEditor(editor, event);
-		}
-	}}
-	class={`edra-editor ${className}`}
-></div>
+
+	<div
+		bind:this={element}
+		role="button"
+		tabindex="0"
+		onclick={(event) => focusEditor(editor, event)}
+		onkeydown={(event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				focusEditor(editor, event);
+			}
+		}}
+		class={`edra-editor ${className ?? ''}`}
+	></div>
+</div>

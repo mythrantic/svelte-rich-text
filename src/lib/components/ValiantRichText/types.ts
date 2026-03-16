@@ -3,6 +3,9 @@ import type { EditorState } from '@tiptap/pm/state';
 import type { EditorView } from '@tiptap/pm/view';
 import type { Snippet } from 'svelte';
 
+export type EdraTheme = 'default' | 'ocean' | 'forest' | 'inherit';
+export type EdraMode = 'light' | 'dark';
+
 export interface EdraEditorProps {
 	content?: Content;
 	editable?: boolean;
@@ -10,6 +13,8 @@ export interface EdraEditorProps {
 	autofocus?: boolean;
 	onUpdate?: () => void;
 	class?: string;
+	theme?: EdraTheme;
+	mode?: EdraMode;
 }
 
 export interface EdraToolbarProps {

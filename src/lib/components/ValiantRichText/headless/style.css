@@ -16,6 +16,17 @@
 	--edra-button-size: 2rem;
 	--edra-icon-size: 1rem;
 	--edra-separator-width: 0.25rem;
+
+	/* Theme surface variables (fallback) */
+	--edra-surface: transparent;
+	--edra-surface-foreground: currentColor;
+	--edra-muted: rgba(128, 128, 128, 0.1);
+	--edra-muted-foreground: rgba(128, 128, 128, 0.8);
+	--edra-accent: #f97316;
+	--edra-accent-foreground: #fff;
+	--edra-toolbar-bg: transparent;
+	--edra-toolbar-border: rgba(128, 128, 128, 0.3);
+	--edra-bubble-menu-bg: #fff;
 }
 
 /** Editor Styles */
@@ -35,6 +46,15 @@
 	--highlight-border: greenyellow;
 	--search-result-bg: yellow;
 	--search-result-current-bg: orange;
+}
+
+/* Wrapper that holds the toolbar + editor and applies the theme */
+.edra-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 100%;
+	height: 100%;
 }
 
 .edra-editor {
@@ -252,7 +272,7 @@
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
-	background-color: white;
+	background-color: var(--edra-bubble-menu-bg, white);
 	backdrop-filter: blur(8px);
 }
 
@@ -290,6 +310,8 @@ input.invalid {
 	border: 1px solid var(--edra-border-color);
 	padding: 0.5rem;
 	backdrop-filter: blur(8px);
+	background-color: var(--edra-bubble-menu-bg, white);
+	color: var(--edra-surface-foreground, currentColor);
 }
 
 .edra-slash-command-list-title {
