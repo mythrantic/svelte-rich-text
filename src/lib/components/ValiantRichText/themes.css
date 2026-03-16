@@ -1,0 +1,390 @@
+/* ============================================================
+   EDRA THEME SYSTEM
+   ============================================================
+   Themes are applied by adding a class to the editor wrapper:
+     .edra-theme-default   (light by default, add .dark for dark mode)
+     .edra-theme-ocean     (light by default, add .dark for dark mode)
+     .edra-theme-forest    (light by default, add .dark for dark mode)
+     .edra-theme-inherit   (no overrides - inherits from host website)
+   ============================================================ */
+
+/* ============================================================
+   DEFAULT THEME — shadcn-inspired with orange accent
+   ============================================================ */
+
+.edra-theme-default {
+	/* Toolbar UI */
+	--edra-border-color: hsl(214.3, 31.8%, 91.4%);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: hsl(210, 40%, 93%);
+	--edra-button-active-bg-color: hsl(210, 40%, 88%);
+	--edra-icon-color: hsl(222.2, 47.4%, 11.2%);
+	--edra-separator-color: hsl(214.3, 31.8%, 91.4%);
+	--edra-gap: 0.15rem;
+	--edra-border-radius: 0.5rem;
+	--edra-button-border-radius: 0.375rem;
+	--edra-padding: 0.375rem;
+	--edra-button-padding: 0.375rem;
+	--edra-button-size: 2rem;
+	--edra-icon-size: 0.9375rem;
+	--edra-separator-width: 1px;
+
+	/* Editor content */
+	--border-color: hsl(214.3, 31.8%, 91.4%);
+	--border-color-hover: hsl(214.3, 31.8%, 80%);
+	--blockquote-border: hsl(24.6, 95%, 53.1%);
+	--blockquote-color: hsl(215.4, 16.3%, 46.9%);
+	--code-color: hsl(24.6, 95%, 53.1%);
+	--code-bg: hsl(210, 40%, 96.1%);
+	--code-border: hsl(214.3, 31.8%, 91.4%);
+	--table-border: hsl(214.3, 31.8%, 91.4%);
+	--table-bg-selected: hsl(210, 40%, 96.1%);
+	--table-bg-hover: hsl(210, 40%, 93%);
+	--task-completed-color: hsl(215.4, 16.3%, 46.9%);
+	--codeblock-bg: hsl(222.2, 84%, 4.9%);
+	--highlight-color: hsla(24.6, 95%, 53.1%, 0.15);
+	--highlight-border: hsl(24.6, 95%, 53.1%);
+	--search-result-bg: hsl(47.9, 95.8%, 70%);
+	--search-result-current-bg: hsl(24.6, 95%, 53.1%);
+
+	/* Surface */
+	--edra-surface: hsl(0, 0%, 100%);
+	--edra-surface-foreground: hsl(222.2, 84%, 4.9%);
+	--edra-muted: hsl(210, 40%, 96.1%);
+	--edra-muted-foreground: hsl(215.4, 16.3%, 46.9%);
+	--edra-accent: hsl(24.6, 95%, 53.1%);
+	--edra-accent-foreground: hsl(0, 0%, 100%);
+	--edra-toolbar-bg: hsl(0, 0%, 100%);
+	--edra-toolbar-border: hsl(214.3, 31.8%, 91.4%);
+
+	/* Bubble menu */
+	--edra-bubble-menu-bg: hsl(0, 0%, 100%);
+
+	background-color: var(--edra-surface);
+	color: var(--edra-surface-foreground);
+}
+
+.edra-theme-default.dark {
+	--edra-border-color: hsl(217.2, 32.6%, 17.5%);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: hsl(217.2, 32.6%, 17.5%);
+	--edra-button-active-bg-color: hsl(217.2, 32.6%, 22%);
+	--edra-icon-color: hsl(210, 40%, 98%);
+	--edra-separator-color: hsl(217.2, 32.6%, 17.5%);
+
+	--border-color: hsl(217.2, 32.6%, 17.5%);
+	--border-color-hover: hsl(217.2, 32.6%, 28%);
+	--blockquote-border: hsl(24.6, 95%, 53.1%);
+	--blockquote-color: hsl(215, 20.2%, 65.1%);
+	--code-color: hsl(24.6, 95%, 68%);
+	--code-bg: hsl(222.2, 84%, 8%);
+	--code-border: hsl(217.2, 32.6%, 17.5%);
+	--table-border: hsl(217.2, 32.6%, 17.5%);
+	--table-bg-selected: hsl(222.2, 84%, 8%);
+	--table-bg-hover: hsl(222.2, 84%, 11%);
+	--task-completed-color: hsl(215, 20.2%, 50%);
+	--codeblock-bg: hsl(222.2, 84%, 3%);
+	--highlight-color: hsla(24.6, 95%, 53.1%, 0.2);
+	--highlight-border: hsl(24.6, 95%, 53.1%);
+	--search-result-bg: hsl(47.9, 95.8%, 40%);
+	--search-result-current-bg: hsl(24.6, 95%, 53.1%);
+
+	--edra-surface: hsl(222.2, 84%, 4.9%);
+	--edra-surface-foreground: hsl(210, 40%, 98%);
+	--edra-muted: hsl(217.2, 32.6%, 12%);
+	--edra-muted-foreground: hsl(215, 20.2%, 65.1%);
+	--edra-accent: hsl(24.6, 95%, 53.1%);
+	--edra-accent-foreground: hsl(0, 0%, 100%);
+	--edra-toolbar-bg: hsl(222.2, 84%, 6%);
+	--edra-toolbar-border: hsl(217.2, 32.6%, 17.5%);
+
+	--edra-bubble-menu-bg: hsl(222.2, 84%, 6%);
+
+	background-color: var(--edra-surface);
+	color: var(--edra-surface-foreground);
+}
+
+/* ============================================================
+   OCEAN THEME — blue-teal palette
+   ============================================================ */
+
+.edra-theme-ocean {
+	--edra-border-color: hsl(199, 52%, 88%);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: hsl(199, 52%, 92%);
+	--edra-button-active-bg-color: hsl(199, 52%, 85%);
+	--edra-icon-color: hsl(200, 70%, 20%);
+	--edra-separator-color: hsl(199, 52%, 88%);
+	--edra-gap: 0.15rem;
+	--edra-border-radius: 0.5rem;
+	--edra-button-border-radius: 0.375rem;
+	--edra-padding: 0.375rem;
+	--edra-button-padding: 0.375rem;
+	--edra-button-size: 2rem;
+	--edra-icon-size: 0.9375rem;
+	--edra-separator-width: 1px;
+
+	--border-color: hsl(199, 52%, 88%);
+	--border-color-hover: hsl(199, 52%, 78%);
+	--blockquote-border: hsl(199, 78%, 45%);
+	--blockquote-color: hsl(200, 35%, 45%);
+	--code-color: hsl(199, 78%, 35%);
+	--code-bg: hsl(199, 52%, 95%);
+	--code-border: hsl(199, 52%, 88%);
+	--table-border: hsl(199, 52%, 88%);
+	--table-bg-selected: hsl(199, 52%, 95%);
+	--table-bg-hover: hsl(199, 52%, 92%);
+	--task-completed-color: hsl(200, 35%, 55%);
+	--codeblock-bg: hsl(200, 70%, 12%);
+	--highlight-color: hsla(199, 78%, 45%, 0.15);
+	--highlight-border: hsl(199, 78%, 45%);
+	--search-result-bg: hsl(180, 80%, 70%);
+	--search-result-current-bg: hsl(199, 78%, 45%);
+
+	--edra-surface: hsl(195, 40%, 98%);
+	--edra-surface-foreground: hsl(200, 70%, 12%);
+	--edra-muted: hsl(199, 52%, 95%);
+	--edra-muted-foreground: hsl(200, 35%, 45%);
+	--edra-accent: hsl(199, 78%, 45%);
+	--edra-accent-foreground: hsl(0, 0%, 100%);
+	--edra-toolbar-bg: hsl(195, 40%, 98%);
+	--edra-toolbar-border: hsl(199, 52%, 88%);
+
+	--edra-bubble-menu-bg: hsl(195, 40%, 98%);
+
+	background-color: var(--edra-surface);
+	color: var(--edra-surface-foreground);
+}
+
+.edra-theme-ocean.dark {
+	--edra-border-color: hsl(200, 40%, 18%);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: hsl(200, 40%, 18%);
+	--edra-button-active-bg-color: hsl(200, 40%, 24%);
+	--edra-icon-color: hsl(199, 60%, 88%);
+	--edra-separator-color: hsl(200, 40%, 18%);
+
+	--border-color: hsl(200, 40%, 18%);
+	--border-color-hover: hsl(200, 40%, 28%);
+	--blockquote-border: hsl(199, 78%, 55%);
+	--blockquote-color: hsl(199, 50%, 65%);
+	--code-color: hsl(199, 78%, 65%);
+	--code-bg: hsl(200, 60%, 8%);
+	--code-border: hsl(200, 40%, 18%);
+	--table-border: hsl(200, 40%, 18%);
+	--table-bg-selected: hsl(200, 60%, 8%);
+	--table-bg-hover: hsl(200, 60%, 11%);
+	--task-completed-color: hsl(199, 50%, 50%);
+	--codeblock-bg: hsl(200, 70%, 5%);
+	--highlight-color: hsla(199, 78%, 55%, 0.2);
+	--highlight-border: hsl(199, 78%, 55%);
+	--search-result-bg: hsl(180, 60%, 30%);
+	--search-result-current-bg: hsl(199, 78%, 55%);
+
+	--edra-surface: hsl(200, 60%, 6%);
+	--edra-surface-foreground: hsl(199, 60%, 88%);
+	--edra-muted: hsl(200, 40%, 10%);
+	--edra-muted-foreground: hsl(199, 50%, 60%);
+	--edra-accent: hsl(199, 78%, 55%);
+	--edra-accent-foreground: hsl(0, 0%, 100%);
+	--edra-toolbar-bg: hsl(200, 60%, 7%);
+	--edra-toolbar-border: hsl(200, 40%, 18%);
+
+	--edra-bubble-menu-bg: hsl(200, 60%, 7%);
+
+	background-color: var(--edra-surface);
+	color: var(--edra-surface-foreground);
+}
+
+/* ============================================================
+   FOREST THEME — green/earth palette
+   ============================================================ */
+
+.edra-theme-forest {
+	--edra-border-color: hsl(138, 30%, 88%);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: hsl(138, 30%, 92%);
+	--edra-button-active-bg-color: hsl(138, 30%, 86%);
+	--edra-icon-color: hsl(140, 60%, 18%);
+	--edra-separator-color: hsl(138, 30%, 88%);
+	--edra-gap: 0.15rem;
+	--edra-border-radius: 0.5rem;
+	--edra-button-border-radius: 0.375rem;
+	--edra-padding: 0.375rem;
+	--edra-button-padding: 0.375rem;
+	--edra-button-size: 2rem;
+	--edra-icon-size: 0.9375rem;
+	--edra-separator-width: 1px;
+
+	--border-color: hsl(138, 30%, 88%);
+	--border-color-hover: hsl(138, 30%, 78%);
+	--blockquote-border: hsl(140, 60%, 38%);
+	--blockquote-color: hsl(140, 35%, 40%);
+	--code-color: hsl(30, 70%, 40%);
+	--code-bg: hsl(138, 30%, 95%);
+	--code-border: hsl(138, 30%, 88%);
+	--table-border: hsl(138, 30%, 88%);
+	--table-bg-selected: hsl(138, 30%, 95%);
+	--table-bg-hover: hsl(138, 30%, 92%);
+	--task-completed-color: hsl(140, 25%, 52%);
+	--codeblock-bg: hsl(140, 50%, 10%);
+	--highlight-color: hsla(140, 60%, 38%, 0.15);
+	--highlight-border: hsl(140, 60%, 38%);
+	--search-result-bg: hsl(80, 70%, 70%);
+	--search-result-current-bg: hsl(140, 60%, 38%);
+
+	--edra-surface: hsl(135, 30%, 98%);
+	--edra-surface-foreground: hsl(140, 60%, 10%);
+	--edra-muted: hsl(138, 30%, 95%);
+	--edra-muted-foreground: hsl(140, 25%, 45%);
+	--edra-accent: hsl(140, 60%, 38%);
+	--edra-accent-foreground: hsl(0, 0%, 100%);
+	--edra-toolbar-bg: hsl(135, 30%, 98%);
+	--edra-toolbar-border: hsl(138, 30%, 88%);
+
+	--edra-bubble-menu-bg: hsl(135, 30%, 98%);
+
+	background-color: var(--edra-surface);
+	color: var(--edra-surface-foreground);
+}
+
+.edra-theme-forest.dark {
+	--edra-border-color: hsl(140, 25%, 16%);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: hsl(140, 25%, 16%);
+	--edra-button-active-bg-color: hsl(140, 25%, 22%);
+	--edra-icon-color: hsl(140, 40%, 85%);
+	--edra-separator-color: hsl(140, 25%, 16%);
+
+	--border-color: hsl(140, 25%, 16%);
+	--border-color-hover: hsl(140, 25%, 26%);
+	--blockquote-border: hsl(140, 55%, 48%);
+	--blockquote-color: hsl(140, 35%, 62%);
+	--code-color: hsl(30, 70%, 60%);
+	--code-bg: hsl(140, 40%, 7%);
+	--code-border: hsl(140, 25%, 16%);
+	--table-border: hsl(140, 25%, 16%);
+	--table-bg-selected: hsl(140, 40%, 7%);
+	--table-bg-hover: hsl(140, 40%, 10%);
+	--task-completed-color: hsl(140, 25%, 48%);
+	--codeblock-bg: hsl(140, 50%, 4%);
+	--highlight-color: hsla(140, 55%, 48%, 0.2);
+	--highlight-border: hsl(140, 55%, 48%);
+	--search-result-bg: hsl(80, 50%, 28%);
+	--search-result-current-bg: hsl(140, 55%, 48%);
+
+	--edra-surface: hsl(140, 40%, 5%);
+	--edra-surface-foreground: hsl(140, 40%, 85%);
+	--edra-muted: hsl(140, 25%, 10%);
+	--edra-muted-foreground: hsl(140, 25%, 55%);
+	--edra-accent: hsl(140, 55%, 48%);
+	--edra-accent-foreground: hsl(0, 0%, 100%);
+	--edra-toolbar-bg: hsl(140, 40%, 6%);
+	--edra-toolbar-border: hsl(140, 25%, 16%);
+
+	--edra-bubble-menu-bg: hsl(140, 40%, 6%);
+
+	background-color: var(--edra-surface);
+	color: var(--edra-surface-foreground);
+}
+
+/* ============================================================
+   INHERIT THEME — no overrides; inherits from host website
+   ============================================================ */
+
+.edra-theme-inherit {
+	/* All CSS variables unset — inherited from the host page */
+}
+
+/* ============================================================
+   TOOLBAR CONTAINER THEME STYLES
+   ============================================================ */
+
+.edra-theme-default .edra-toolbar,
+.edra-theme-ocean .edra-toolbar,
+.edra-theme-forest .edra-toolbar {
+	background-color: var(--edra-toolbar-bg);
+	border: 1px solid var(--edra-toolbar-border);
+	border-radius: var(--edra-border-radius);
+	padding: var(--edra-padding);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--edra-gap);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+.edra-theme-default .edra-command-button:focus-visible,
+.edra-theme-ocean .edra-command-button:focus-visible,
+.edra-theme-forest .edra-command-button:focus-visible {
+	outline: 2px solid var(--edra-accent);
+	outline-offset: 2px;
+}
+
+.edra-theme-default .edra-command-button.active,
+.edra-theme-ocean .edra-command-button.active,
+.edra-theme-forest .edra-command-button.active {
+	background-color: var(--edra-button-active-bg-color);
+	color: var(--edra-accent);
+}
+
+/* Bubble menu theming */
+.edra-theme-default .bubble-menu-wrapper,
+.edra-theme-ocean .bubble-menu-wrapper,
+.edra-theme-forest .bubble-menu-wrapper {
+	background-color: var(--edra-bubble-menu-bg);
+	border: 1px solid var(--edra-border-color);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Link colour per theme */
+.edra-theme-default .tiptap a {
+	color: hsl(24.6, 95%, 53.1%);
+}
+.edra-theme-ocean .tiptap a {
+	color: hsl(199, 78%, 45%);
+}
+.edra-theme-forest .tiptap a {
+	color: hsl(140, 60%, 38%);
+}
+
+/* Accent colour used on active toolbar button text/icon */
+.edra-theme-default .edra-command-button.active .edra-toolbar-icon {
+	color: var(--edra-accent);
+}
+.edra-theme-ocean .edra-command-button.active .edra-toolbar-icon {
+	color: var(--edra-accent);
+}
+.edra-theme-forest .edra-command-button.active .edra-toolbar-icon {
+	color: var(--edra-accent);
+}
+
+/* Slash command list theming */
+.edra-theme-default .edra-slash-command-list,
+.edra-theme-ocean .edra-slash-command-list,
+.edra-theme-forest .edra-slash-command-list {
+	background-color: var(--edra-bubble-menu-bg);
+	color: var(--edra-surface-foreground);
+}
+
+.edra-theme-default .edra-slash-command-list-item:hover,
+.edra-theme-ocean .edra-slash-command-list-item:hover,
+.edra-theme-forest .edra-slash-command-list-item:hover {
+	background-color: var(--edra-button-hover-bg-color);
+}
+
+/* Media placeholder theming */
+.edra-theme-default .edra-media-placeholder-wrapper,
+.edra-theme-ocean .edra-media-placeholder-wrapper,
+.edra-theme-forest .edra-media-placeholder-wrapper {
+	background-color: var(--edra-muted);
+	border-color: var(--edra-border-color);
+	color: var(--edra-muted-foreground);
+}
+
+.edra-theme-default .edra-media-placeholder-wrapper:hover,
+.edra-theme-ocean .edra-media-placeholder-wrapper:hover,
+.edra-theme-forest .edra-media-placeholder-wrapper:hover {
+	border-color: var(--edra-accent);
+	color: var(--edra-accent);
+}

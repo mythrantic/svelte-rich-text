@@ -1,11 +1,14 @@
-<script>
+<script lang="ts">
 	import { browser } from '$app/environment';
-	import { ValiantRichText } from '$lib/index.js';
+	import { ValiantRichText, EdraThemeSelector } from '$lib/index.js';
 	import defaultContent from '$lib/default_content.js';
+	import type { EdraTheme, EdraMode } from '$lib/components/ValiantRichText/types.js';
 
 	// Editor states
 	let content = $state();
 	let editor = $state();
+	let theme = $state<EdraTheme>('default');
+	let mode = $state<EdraMode>('light');
 
 	$effect(() => {
 		if (content) {
@@ -50,20 +53,31 @@
 	<!-- Live Demo Section -->
 	<section class="demo">
 		<h2 class="section-title">Try It Live</h2>
-		<p class="demo-subtitle">Experience the editor in action. Start typing to see the magic!</p>
+		<p class="demo-subtitle">Experience the editor in action. Switch themes, upload media, and start typing!</p>
+
+		<!-- Theme picker row -->
+		<div class="theme-picker-row">
+			<span class="theme-picker-label">Theme</span>
+			<EdraThemeSelector
+				{theme}
+				{mode}
+				onThemeChange={(t) => (theme = t)}
+				onModeChange={(m) => (mode = m)}
+			/>
+		</div>
 
 		<div class="demo-container">
 			<div class="demo-editor">
 				<h3>Interactive Editor</h3>
 				<div class="editor-wrapper">
-					<ValiantRichText bind:editor {content} {onUpdate} editable={true} />
+					<ValiantRichText bind:editor {content} {onUpdate} editable={true} {theme} {mode} />
 				</div>
 			</div>
 
 			<div class="demo-preview">
 				<h3>Read-Only Preview</h3>
 				<div class="preview-wrapper">
-					<ValiantRichText {content} editable={false} />
+					<ValiantRichText {content} editable={false} {theme} {mode} />
 				</div>
 			</div>
 		</div>
@@ -176,66 +190,48 @@
 		transform: translateY(-2px);
 	}
 
-	/* Features Section */
-	.features {
-		padding: 6rem 2rem;
-		background: white;
-	}
-
-	.section-title {
-		text-align: center;
-		font-size: clamp(2rem, 4vw, 3rem);
-		font-weight: 700;
-		margin-bottom: 3rem;
-		color: #2d3748;
-	}
-
-	.features-grid {
-		max-width: 1200px;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-	}
-
-	.feature-card {
-		padding: 2rem;
-		background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
-		border-radius: 1rem;
-		border: 2px solid #fbbf24;
-		box-shadow: 0 4px 6px rgba(220, 38, 38, 0.1);
-		transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-	}
-
-	.feature-card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
-		border-color: #dc2626;
-	}
-
-	.feature-card h3 {
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 0.75rem;
-		color: #dc2626;
-	}
-
-	.feature-card p {
-		color: #718096;
-		line-height: 1.6;
-	}
-
 	/* Demo Section */
 	.demo {
 		padding: 6rem 2rem;
 		background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
 	}
 
+	.section-title {
+		text-align: center;
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: #2d3748;
+	}
+
 	.demo-subtitle {
 		text-align: center;
 		font-size: 1.25rem;
 		color: #718096;
-		margin-bottom: 3rem;
+		margin-bottom: 1.5rem;
+	}
+
+	/* Theme picker */
+	.theme-picker-row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		margin-bottom: 2rem;
+		padding: 0.625rem 1rem;
+		background: white;
+		border-radius: 0.75rem;
+		width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+		border: 1px solid #e2e8f0;
+	}
+
+	.theme-picker-label {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #4a5568;
 	}
 
 	.demo-container {
@@ -365,17 +361,12 @@
 			padding: 4rem 1.5rem;
 		}
 
-		.features,
 		.demo,
 		.cta {
 			padding: 4rem 1.5rem;
 		}
 
 		.demo-container {
-			grid-template-columns: 1fr;
-		}
-
-		.features-grid {
 			grid-template-columns: 1fr;
 		}
 
@@ -388,3 +379,4 @@
 		}
 	}
 </style>
+
