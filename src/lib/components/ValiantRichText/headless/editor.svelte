@@ -109,10 +109,12 @@
 				'theme-inherit'
 			);
 
-			// Add new theme class
-			element.classList.add(`theme-${theme}-${themeMode}`);
-			element.setAttribute('data-theme', theme);
-			element.setAttribute('data-mode', themeMode);
+			// Add new theme class if theme is not 'inherit'. if it's 'inherit', we rely on the parent element's theme and don't add any class
+			if (theme !== 'inherit') {
+				element.classList.add(`theme-${theme}-${themeMode}`);
+				element.setAttribute('data-theme', theme);
+				element.setAttribute('data-mode', themeMode);
+			}
 		}
 	});
 
