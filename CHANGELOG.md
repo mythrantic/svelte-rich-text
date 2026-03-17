@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.2.3
+
+### Patch Changes
+
+- f445ed9: jho
+
 ## 1.2.2
 
 ### Patch Changes

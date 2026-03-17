@@ -1,6 +1,6 @@
 {
 	"name": "@mythrantic/svelte-rich-text",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"publishConfig": {
 		"access": "public",
 		"registry": "https://registry.npmjs.org/",
