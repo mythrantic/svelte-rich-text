@@ -1,5 +1,43 @@
 /* Base TipTap Editor Styles with Light/Dark Theme Support */
 
+/* Default fallback theme */
+:root {
+	--color-background: #ffffff;
+	--color-foreground: #0f172a;
+	--color-muted: #f1f5f9;
+	--color-muted-foreground: #64748b;
+	--color-primary: #ea580c;
+	--color-primary-light: #f97316;
+	--color-primary-dark: #c2410c;
+	--color-secondary: #f1f5f9;
+	--color-secondary-foreground: #0f172a;
+	--color-accent: #ea580c;
+	--color-accent-light: #f97316;
+	--color-accent-dark: #c2410c;
+	--color-destructive: #dc2626;
+	--color-input: #e2e8f0;
+	--color-border: #e2e8f0;
+	--blockquote-color: #475569;
+	--blockquote-border: #ea580c;
+	--border-color: #e2e8f0;
+	--border-color-hover: #cbd5e1;
+	--code-bg: #f1f5f9;
+	--codeblock-bg: #1e293b;
+	--table-border: #e2e8f0;
+	--table-bg-selected: #f0f9ff;
+	--table-bg-hover: #f8fafc;
+	--highlight-color: #fef3c7;
+	--highlight-border: #fbbf24;
+	--search-result-bg: #fef08a;
+	--search-result-current-bg: #fbbf24;
+	--task-completed-color: #94a3b8;
+}
+
+.valiant-editor {
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+}
+
 .tiptap :first-child {
 	margin-top: 0;
 }

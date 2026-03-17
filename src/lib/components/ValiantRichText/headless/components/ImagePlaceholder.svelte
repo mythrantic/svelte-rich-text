@@ -6,10 +6,38 @@
 	const { editor }: NodeViewProps = $props();
 	import Image from '@lucide/svelte/icons/image';
 
+	let fileInput = $state<HTMLInputElement | undefined>();
+
 	function handleClick() {
-		const imageUrl = prompt('Please enter the image URL');
+		// Try to open file picker first
+		if (fileInput) {
+			fileInput.click();
+		} else {
+			// Fallback to URL input
+			promptForUrl();
+		}
+	}
+
+	function promptForUrl() {
+		const imageUrl = prompt('Enter image URL or select a file');
 		if (imageUrl) {
 			editor.chain().focus().setImage({ src: imageUrl }).run();
+		}
+	}
+
+	function handleFileSelect(e: Event) {
+		const input = e.target as HTMLInputElement;
+		const file = input.files?.[0];
+
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = (event) => {
+				const src = event.target?.result as string;
+				if (src) {
+					editor.chain().focus().setImage({ src }).run();
+				}
+			};
+			reader.readAsDataURL(file);
 		}
 	}
 </script>
@@ -21,6 +49,13 @@
 			icon={Image}
 			title="Insert an image"
 			onClick={handleClick}
+		/>
+		<input
+			bind:this={fileInput}
+			type="file"
+			accept="image/*"
+			onchange={handleFileSelect}
+			style="display: none;"
 		/>
 	{/if}
 </NodeViewWrapper>

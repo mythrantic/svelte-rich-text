@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Editor } from '@tiptap/core';
+	import ToolbarDropdown from './ToolbarDropdown.svelte';
 
 	interface Props {
 		editor: Editor;
@@ -21,50 +22,31 @@
 
 	const currentColor = $derived.by(() => editor.getAttributes('textStyle').color ?? '');
 	const currentHighlight = $derived.by(() => editor.getAttributes('highlight').color ?? '');
+
+	function handleColorChange(color: string) {
+		editor.chain().focus().setColor(color).run();
+	}
+
+	function handleHighlightChange(color: string) {
+		editor.chain().focus().setHighlight({ color }).run();
+	}
 </script>
 
-<select
+<ToolbarDropdown
+	options={colors}
 	value={currentColor}
-	onchange={(e) => {
-		const color = (e.target as HTMLSelectElement).value;
-		editor.chain().focus().setColor(color).run();
-	}}
-	style={`color: ${currentColor}`}
-	title="Text Color"
->
-	<option value="" label="Default"></option>
-	{#each colors as color (color)}
-		<option value={color.value} label={color.label}></option>
-	{/each}
-</select>
+	label="Text Color"
+	placeholder="Color"
+	onchange={handleColorChange}
+/>
 
-<select
+<ToolbarDropdown
+	options={colors}
 	value={currentHighlight}
-	onchange={(e) => {
-		const color = (e.target as HTMLSelectElement).value;
-		editor.chain().focus().setHighlight({ color }).run();
-	}}
-	style={`background-color: ${currentHighlight}50`}
-	title="Hightlight Color"
->
-	<option value="" label="Default"></option>
-	{#each colors as color (color)}
-		<option value={color.value} label={color.label}>A</option>
-	{/each}
-</select>
+	label="Highlight Color"
+	placeholder="Highlight"
+	onchange={handleHighlightChange}
+/>
 
 <style>
-	select {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border: none;
-		background-color: var(--edra-button-bg-color);
-		border-radius: var(--edra-button-border-radius);
-		cursor: pointer;
-		transition: background-color 0.2s ease-in-out;
-		padding: var(--edra-button-padding);
-		min-width: fit;
-		min-height: var(--edra-button-size);
-	}
 </style>

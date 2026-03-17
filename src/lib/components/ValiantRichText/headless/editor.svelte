@@ -31,12 +31,19 @@
 	import Link from './menus/Link.svelte';
 	import slashcommand from '../extensions/slash-command/slashcommand.js';
 	import SlashCommandList from './components/SlashCommandList.svelte';
-	
+
 	import { EdraToolBar } from './index.js';
 	import EdraToolBarIcon from './components/ToolBarIcon.svelte';
 	import { isMac } from '../utils.js';
 	import DragHandle from '../components/DragHandle.svelte';
 	import Bold from '@lucide/svelte/icons/bold';
+	import '../themes/default-light.css';
+	import '../themes/default-dark.css';
+	import '../themes/modern-light.css';
+	import '../themes/modern-dark.css';
+	import '../themes/professional-light.css';
+	import '../themes/professional-dark.css';
+	import '../themes/inherit.css';
 
 	const lowlight = createLowlight(all);
 
@@ -50,7 +57,9 @@
 		content,
 		onUpdate,
 		autofocus = false,
-		class: className
+		class: className,
+		theme = 'default',
+		themeMode = 'light'
 	}: EdraEditorProps = $props();
 
 	onMount(() => {
@@ -75,20 +84,36 @@
 			slashcommand(SlashCommandList)
 		];
 
-		editor = initEditor(
-			element,
-			content,
-			extensions,
-			{
-				onUpdate,
-				onTransaction(props) {
-					editor = undefined;
-					editor = props.editor;
-				},
-				editable,
-				autofocus
-			}
-		);
+		editor = initEditor(element, content, extensions, {
+			onUpdate,
+			onTransaction(props) {
+				editor = undefined;
+				editor = props.editor;
+			},
+			editable,
+			autofocus
+		});
+	});
+
+	// Reactively update theme classes when theme or themeMode changes
+	$effect(() => {
+		if (element) {
+			// Remove all old theme classes
+			element.classList.remove(
+				'theme-default-light',
+				'theme-default-dark',
+				'theme-modern-light',
+				'theme-modern-dark',
+				'theme-professional-light',
+				'theme-professional-dark',
+				'theme-inherit'
+			);
+
+			// Add new theme class
+			element.classList.add(`theme-${theme}-${themeMode}`);
+			element.setAttribute('data-theme', theme);
+			element.setAttribute('data-mode', themeMode);
+		}
 	});
 
 	onDestroy(() => {
@@ -103,26 +128,26 @@
 {/if}
 
 {#if editor && !editor.isDestroyed && editor.isEditable}
-		<EdraToolBar {editor} />
+	<EdraToolBar {editor} />
 
-		<!-- Customized Edra toolbar -->
-		<EdraToolBar {editor}>
-			<div class="border-r px-3 text-sm">Customized toolbar</div>
-			<EdraToolBarIcon
-				command={{
-					icon: Bold,
-					name: 'bold',
-					tooltip: 'Bold',
-					shortCut: isMac ? '⌘+B' : 'Ctrl+B',
-					onClick: (editor) => {
-						editor.chain().focus().toggleBold().run();
-					}
-				}}
-				{editor}
-			/>
-		</EdraToolBar>
-		<DragHandle {editor} />
-	{/if}
+	<!-- Customized Edra toolbar -->
+	<EdraToolBar {editor}>
+		<div class="border-r px-3 text-sm">Customized toolbar</div>
+		<EdraToolBarIcon
+			command={{
+				icon: Bold,
+				name: 'bold',
+				tooltip: 'Bold',
+				shortCut: isMac ? '⌘+B' : 'Ctrl+B',
+				onClick: (editor) => {
+					editor.chain().focus().toggleBold().run();
+				}
+			}}
+			{editor}
+		/>
+	</EdraToolBar>
+	<DragHandle {editor} />
+{/if}
 <div
 	bind:this={element}
 	role="button"

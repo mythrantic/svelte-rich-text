@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Editor } from '@tiptap/core';
+	import ToolbarDropdown from './ToolbarDropdown.svelte';
 
 	interface Props {
 		editor: Editor;
@@ -17,36 +18,16 @@
 	];
 
 	let currentSize = $derived.by(() => editor.getAttributes('textStyle').fontSize || '');
+
+	function handleFontSizeChange(value: string) {
+		editor.chain().focus().setFontSize(value).run();
+	}
 </script>
 
-<select
+<ToolbarDropdown
+	options={FONT_SIZE}
 	value={currentSize}
-	onchange={(e) => {
-		editor
-			.chain()
-			.focus()
-			.setFontSize((e.target as HTMLSelectElement).value)
-			.run();
-	}}
-	title="Font Size"
->
-	{#each FONT_SIZE as fontSize (fontSize)}
-		<option value={fontSize.value} label={fontSize.label.split(' ')[0]}></option>
-	{/each}
-</select>
-
-<style>
-	select {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border: none;
-		background-color: var(--edra-button-bg-color);
-		border-radius: var(--edra-button-border-radius);
-		cursor: pointer;
-		transition: background-color 0.2s ease-in-out;
-		padding: var(--edra-button-padding);
-		min-width: fit;
-		min-height: full;
-	}
-</style>
+	label="Font Size"
+	placeholder="Size"
+	onchange={handleFontSizeChange}
+/>

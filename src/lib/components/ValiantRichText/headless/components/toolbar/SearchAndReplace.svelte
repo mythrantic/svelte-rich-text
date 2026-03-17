@@ -65,19 +65,20 @@
 
 <div class="edra-search-and-replace">
 	<button
-		class="edra-command-button"
+		class="edra-command-button edra-filter-button"
 		onclick={() => {
 			show = !show;
 			clear();
 			updateSearchTerm();
 		}}
-		title={show ? 'Go Back' : 'Search and Replace'}
+		title={show ? 'Go Back' : 'Filter and Search'}
 	>
 		{#if show}
 			<ArrowLeft class="edra-toolbar-icon" />
 		{:else}
 			<Search class="edra-toolbar-icon" />
 		{/if}
+		<span class="edra-filter-label">Filter</span>
 	</button>
 	{#if show}
 		<div class="edra-search-and-replace-content">

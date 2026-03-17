@@ -1,40 +1,53 @@
 :root {
-	/* Color Variables */
-	--edra-border-color: #80808050;
-	--edra-button-bg-color: #80808025;
-	--edra-button-hover-bg-color: #80808075;
-	--edra-button-active-bg-color: #80808090;
-	--edra-icon-color: currentColor; /* Default, can be customized */
-	--edra-separator-color: currentColor; /* Default, can be customized */
+	/* Color Variables - themed */
+	--edra-border-color: var(--color-border);
+	--edra-button-bg-color: transparent;
+	--edra-button-hover-bg-color: var(--color-muted);
+	--edra-button-active-bg-color: var(--color-muted);
+	--edra-icon-color: var(--color-foreground); /* Inherits from theme */
+	--edra-separator-color: var(--color-border); /* Inherits from theme */
 
 	/* Size and Spacing Variables */
-	--edra-gap: 0.25rem;
-	--edra-border-radius: 0.5rem;
-	--edra-button-border-radius: 0.5rem;
-	--edra-padding: 0.5rem;
-	--edra-button-padding: 0.25rem;
-	--edra-button-size: 2rem;
+	--edra-gap: 0.5rem;
+	--edra-border-radius: 0.375rem;
+	--edra-button-border-radius: 0.375rem;
+	--edra-padding: 0.75rem;
+	--edra-button-padding: 0.375rem;
+	--edra-button-size: 2.5rem;
 	--edra-icon-size: 1rem;
-	--edra-separator-width: 0.25rem;
+	--edra-separator-width: 1px;
 }
 
 /** Editor Styles */
 :root {
-	--border-color: rgba(128, 128, 128, 0.3);
-	--border-color-hover: rgba(128, 128, 128, 0.5);
-	--blockquote-border: rgba(128, 128, 128, 0.7);
-	--code-color: rgb(255, 68, 0);
-	--code-bg: rgba(128, 128, 128, 0.3);
-	--code-border: rgba(128, 128, 128, 0.4);
-	--table-border: rgba(128, 128, 128, 0.3);
-	--table-bg-selected: rgba(128, 128, 128, 0.1);
-	--table-bg-hover: rgba(128, 128, 128, 0.2);
-	--task-completed-color: rgba(128, 128, 128, 0.7);
-	--code-wrapper-bg: rgba(128, 128, 128, 0.05);
-	--highlight-color: rgba(0, 128, 0, 0.3);
-	--highlight-border: greenyellow;
-	--search-result-bg: yellow;
-	--search-result-current-bg: orange;
+	--border-color: var(--border-color);
+	--border-color-hover: var(--border-color-hover);
+	--blockquote-border: var(--blockquote-border);
+	--code-color: var(--color-primary);
+	--code-bg: var(--code-bg);
+	--code-border: var(--color-border);
+	--table-border: var(--table-border);
+	--table-bg-selected: var(--table-bg-selected);
+	--table-bg-hover: var(--table-bg-hover);
+	--task-completed-color: var(--task-completed-color);
+	--code-wrapper-bg: color-mix(in srgb, var(--color-muted) 50%, transparent);
+	--highlight-color: var(--highlight-color);
+	--highlight-border: var(--highlight-border);
+	--search-result-bg: var(--search-result-bg);
+	--search-result-current-bg: var(--search-result-current-bg);
+}
+
+/* Toolbar Container */
+.edra-toolbar {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.25rem;
+	padding: 0.5rem;
+	background-color: var(--color-background);
+	border: 1px solid var(--edra-border-color);
+	border-radius: var(--edra-border-radius);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .edra-editor {
@@ -58,28 +71,104 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	border: none;
+	border: 1px solid transparent;
 	background-color: var(--edra-button-bg-color);
 	border-radius: var(--edra-button-border-radius);
 	cursor: pointer;
-	transition: background-color 0.2s ease-in-out;
-	padding: var(--edra-button-padding);
-	min-width: var(--edra-button-size);
-	min-height: var(--edra-button-size);
+	transition: all 0.15s ease-in-out;
+	padding: 0.375rem;
+	width: 2.25rem;
+	height: 2.25rem;
+	min-width: 2.25rem;
+	min-height: 2.25rem;
+	flex-shrink: 0;
+	position: relative;
 }
 
 .edra-command-button:hover {
 	background-color: var(--edra-button-hover-bg-color);
+	border-color: transparent;
+	transform: translateY(-1px);
 }
 
 .edra-command-button.active {
 	background-color: var(--edra-button-active-bg-color);
+	border-color: var(--color-primary);
+	font-weight: 500;
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.edra-command-button:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	transform: none;
 }
 
 .edra-toolbar-icon {
 	height: var(--edra-icon-size);
 	width: var(--edra-icon-size);
 	color: var(--edra-icon-color);
+}
+
+/* Toolbar Separator */
+.edra-toolbar-separator {
+	width: 1px;
+	height: 1.75rem;
+	background-color: var(--edra-separator-color);
+	margin: 0 0.375rem;
+	opacity: 0.15;
+	flex-shrink: 0;
+	transition: opacity 0.2s ease;
+}
+
+/* Toolbar Groups with visual hierarchy */
+.edra-toolbar-group {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	flex-shrink: 0;
+}
+
+/* Essential commands (Undo/Redo) - always at full opacity */
+.edra-group-essential {
+	/* full opacity by default */
+}
+
+/* Document structure (Headings, Lists) */
+.edra-group-structure {
+	/* standard visibility */
+}
+
+/* Text Formatting (Bold, Italic, etc.) */
+.edra-group-formatting {
+	/* standard visibility */
+}
+
+/* Layout commands (Alignment) */
+.edra-group-layout {
+	/* standard visibility */
+}
+
+/* Appearance (Font Size, Colors) */
+.edra-group-appearance {
+	/* standard visibility */
+}
+
+/* Niche/Advanced features (Media, Table, Math) - subtle opacity hint */
+.edra-group-niche .edra-command-button {
+	opacity: 0.9;
+}
+
+.edra-group-niche .edra-command-button:hover {
+	opacity: 1;
+}
+
+.edra-toolbar-search-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	flex-shrink: 0;
+	margin-left: auto;
 }
 
 .edra-media-placeholder-wrapper {
@@ -252,12 +341,13 @@
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
-	background-color: white;
+	background-color: var(--color-background);
+	color: var(--color-foreground);
 	backdrop-filter: blur(8px);
 }
 
 html.dark .bubble-menu-wrapper {
-	background-color: black;
+	background-color: var(--color-background);
 }
 
 .bubble-menu-wrapper input {
@@ -321,20 +411,71 @@ input.invalid {
 .edra-search-and-replace {
 	display: flex;
 	align-items: center;
-	gap: var(--edra-gap);
+	gap: 0.25rem;
 }
 
 .edra-search-and-replace-content {
 	display: flex;
 	align-items: center;
-	gap: var(--edra-gap);
+	gap: 0.25rem;
+	background-color: var(--color-muted);
+	border-radius: var(--edra-button-border-radius);
+	padding: 0.25rem;
 }
 
 .edra-search-and-replace-content input {
 	max-width: 10rem;
-	background: none;
-	width: 15rem;
-	border: 1px solid var(--edra-border-color);
+	background: transparent;
+	width: 12rem;
+	border: none;
 	border-radius: var(--edra-button-border-radius);
-	padding: 0.2rem 0.5rem;
+	padding: 0.5rem;
+	color: var(--color-foreground);
+	font-size: 0.875rem;
+}
+
+.edra-search-and-replace-content input::placeholder {
+	color: var(--color-foreground);
+	opacity: 0.5;
+}
+
+.edra-search-and-replace-content input:focus {
+	outline: none;
+	background-color: var(--color-background);
+	border: 1px solid var(--color-primary);
+}
+
+.edra-search-and-replace-content > span {
+	padding: 0 0.5rem;
+	font-size: 0.75rem;
+	color: var(--color-foreground);
+	opacity: 0.7;
+	white-space: nowrap;
+}
+
+/* Filter Button with Label */
+.edra-filter-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.375rem;
+	width: auto;
+	min-width: auto;
+	padding: 0.375rem 0.625rem;
+	font-weight: 500;
+}
+
+.edra-filter-button:hover {
+	background-color: var(--edra-button-hover-bg-color);
+	transform: translateY(-1px);
+}
+
+.edra-filter-label {
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: var(--color-foreground);
+	white-space: nowrap;
+	opacity: 0.85;
 }

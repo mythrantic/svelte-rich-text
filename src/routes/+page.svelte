@@ -2,6 +2,8 @@
 	import { browser } from '$app/environment';
 	import { ValiantRichText } from '$lib/index.js';
 	import defaultContent from '$lib/default_content.js';
+	import ThemeProvider from '$lib/components/ThemeProvider.svelte';
+	import ThemeSelector from '$lib/components/ThemeSelector.svelte';
 
 	// Editor states
 	let content = $state();
@@ -52,18 +54,44 @@
 		<h2 class="section-title">Try It Live</h2>
 		<p class="demo-subtitle">Experience the editor in action. Start typing to see the magic!</p>
 
+		<ThemeSelector />
+
 		<div class="demo-container">
-			<div class="demo-editor">
-				<h3>Interactive Editor</h3>
-				<div class="editor-wrapper">
-					<ValiantRichText bind:editor {content} {onUpdate} editable={true} />
+			<ThemeProvider>
+				<div class="demo-editor valiant-editor">
+					<h3>Interactive Editor</h3>
+					<div class="editor-wrapper valiant-editor">
+						<ValiantRichText bind:editor {content} {onUpdate} editable={true} />
+					</div>
+				</div>
+
+				<div class="demo-preview valiant-editor">
+					<h3>Read-Only Preview</h3>
+					<div class="preview-wrapper valiant-editor">
+						<ValiantRichText {content} editable={false} />
+					</div>
+				</div>
+			</ThemeProvider>
+		</div>
+	</section>
+
+	<!-- Theme Prop Section -->
+	<section class="demo">
+		<h2 class="section-title">Built-In Theme Support</h2>
+		<p class="demo-subtitle">Pass theme directly via props - no wrapper needed!</p>
+
+		<div class="demo-container">
+			<div class="demo-editor valiant-editor">
+				<h3>Modern Dark Theme (Direct Props)</h3>
+				<div class="editor-wrapper valiant-editor">
+					<ValiantRichText {content} editable={true} theme="modern" themeMode="dark" />
 				</div>
 			</div>
 
-			<div class="demo-preview">
-				<h3>Read-Only Preview</h3>
-				<div class="preview-wrapper">
-					<ValiantRichText {content} editable={false} />
+			<div class="demo-preview valiant-editor">
+				<h3>Professional Light Theme (Direct Props)</h3>
+				<div class="preview-wrapper valiant-editor">
+					<ValiantRichText {content} editable={false} theme="professional" themeMode="light" />
 				</div>
 			</div>
 		</div>
@@ -81,8 +109,7 @@
 		</div>
 	</section>
 
-<div id="samlet-chat"></div>
-
+	<div id="samlet-chat"></div>
 
 	<!-- Footer -->
 	<footer class="footer">
@@ -204,7 +231,10 @@
 		border-radius: 1rem;
 		border: 2px solid #fbbf24;
 		box-shadow: 0 4px 6px rgba(220, 38, 38, 0.1);
-		transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease,
+			border-color 0.3s ease;
 	}
 
 	.feature-card:hover {
@@ -228,7 +258,7 @@
 	/* Demo Section */
 	.demo {
 		padding: 6rem 2rem;
-		background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+		background: linear-gradient(135deg, var(--color-muted) 0%, var(--color-background) 100%);
 	}
 
 	.demo-subtitle {
@@ -248,7 +278,8 @@
 
 	.demo-editor,
 	.demo-preview {
-		background: white;
+		background: var(--color-background);
+		color: var(--color-foreground);
 		border-radius: 1rem;
 		padding: 2rem;
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -259,17 +290,19 @@
 		font-size: 1.5rem;
 		font-weight: 600;
 		margin-bottom: 1.5rem;
-		color: #2d3748;
+		color: var(--color-foreground);
 	}
 
 	.editor-wrapper,
 	.preview-wrapper {
-		border: 1px solid #e2e8f0;
+		border: 1px solid var(--color-border);
 		border-radius: 0.5rem;
 		min-height: 400px;
 		padding: 1rem;
 		overflow-y: auto;
 		max-height: 600px;
+		background: var(--color-background);
+		color: var(--color-foreground);
 	}
 
 	/* CTA Section */
