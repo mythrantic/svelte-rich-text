@@ -90,6 +90,30 @@
 			</div>
 		</div>
 	</section>
+	<!-- Theme Inheritance Section -->
+	<section class="demo">
+		<h2 class="section-title">Theme Inheritance (Custom CSS Variables)</h2>
+		<p class="demo-subtitle">
+			Use theme="inherit" to apply custom CSS variables from parent container
+		</p>
+
+		<div class="demo-container">
+			<div class="demo-editor custom-theme-container-1">
+				<h3>Custom Teal Theme (Inherited)</h3>
+				<div class="editor-wrapper valiant-editor">
+					<ValiantRichText {content} editable={true} theme="inherit" />
+				</div>
+			</div>
+
+			<div class="demo-preview custom-theme-container-2">
+				<h3>Custom Purple Theme (Inherited)</h3>
+				<div class="preview-wrapper valiant-editor">
+					<ValiantRichText {content} editable={false} theme="inherit" />
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- CTA Section -->
 	<section class="cta">
 		<div class="cta-content">
@@ -383,6 +407,33 @@
 
 	.footer-links a:hover {
 		opacity: 1;
+	}
+
+	/* Custom Theme Containers (for theme="inherit" testing) */
+	.custom-theme-container-1 {
+		/* Teal custom theme */
+		--color-primary: #0d9488;
+		--color-primary-dark: #0f766e;
+		--color-secondary: #06b6d4;
+		--color-background: #f0fdfa;
+		--color-foreground: #134e4a;
+		--color-border: #a7f3d0;
+		--color-muted: #d1fae5;
+		--codeblock-bg: #ecfdf5;
+		--codeblock-text: #064e3b;
+	}
+
+	.custom-theme-container-2 {
+		/* Purple custom theme */
+		--color-primary: #7c3aed;
+		--color-primary-dark: #6d28d9;
+		--color-secondary: #a78bfa;
+		--color-background: #faf5ff;
+		--color-foreground: #581c87;
+		--color-border: #e9d5ff;
+		--color-muted: #f3e8ff;
+		--codeblock-bg: #ede9fe;
+		--codeblock-text: #4c1d95;
 	}
 
 	/* Responsive */

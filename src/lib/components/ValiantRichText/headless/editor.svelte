@@ -98,7 +98,7 @@
 	// Reactively update theme classes when theme or themeMode changes
 	$effect(() => {
 		if (element) {
-			// Remove all old theme classes
+			// Remove all theme classes
 			element.classList.remove(
 				'theme-default-light',
 				'theme-default-dark',
@@ -109,10 +109,17 @@
 				'theme-inherit'
 			);
 
-			// Always add the theme class to apply CSS variables
-			element.classList.add(`theme-${theme}-${themeMode}`);
-			element.setAttribute('data-theme', theme);
-			element.setAttribute('data-mode', themeMode);
+			// Only add theme class if not inheriting
+			// When theme is 'inherit', the editor will use the parent's CSS variables
+			if (theme !== 'inherit') {
+				element.classList.add(`theme-${theme}-${themeMode}`);
+				element.setAttribute('data-theme', theme);
+				element.setAttribute('data-mode', themeMode);
+			} else {
+				// For inherit, still set data attributes but don't add theme class
+				element.setAttribute('data-theme', 'inherit');
+				element.setAttribute('data-mode', themeMode);
+			}
 		}
 	});
 
