@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.2.1
+
+### Patch Changes
+
+- 3f06b11: inherit will mayve work now
+
 ## 1.2.0
 
 ### Minor Changes
