@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.2.2
+
+### Patch Changes
+
+- a162a81: playing with colors
+
 ## 1.2.1
 
 ### Patch Changes
