@@ -411,7 +411,7 @@
 
 	/* Custom Theme Containers (for theme="inherit" testing) */
 	.custom-theme-container-1 {
-		/* Teal custom theme */
+		/* Teal custom theme - define on container and specific wrappers */
 		--color-primary: #0d9488;
 		--color-primary-dark: #0f766e;
 		--color-secondary: #06b6d4;
@@ -421,10 +421,16 @@
 		--color-muted: #d1fae5;
 		--codeblock-bg: #ecfdf5;
 		--codeblock-text: #064e3b;
+		--blockquote-color: #0d7377;
+		--blockquote-border: #14b8a6;
+		--border-color: #a7f3d0;
+		--code-bg: #d1fae5;
+		--color-input: #ccf0ee;
+		--table-border: #a7f3d0;
 	}
 
 	.custom-theme-container-2 {
-		/* Purple custom theme */
+		/* Purple custom theme - define on container and specific wrappers */
 		--color-primary: #7c3aed;
 		--color-primary-dark: #6d28d9;
 		--color-secondary: #a78bfa;
@@ -434,6 +440,51 @@
 		--color-muted: #f3e8ff;
 		--codeblock-bg: #ede9fe;
 		--codeblock-text: #4c1d95;
+		--blockquote-color: #6b21a8;
+		--blockquote-border: #a855f7;
+		--border-color: #e9d5ff;
+		--code-bg: #f3e8ff;
+		--color-input: #ede9fe;
+		--table-border: #e9d5ff;
+	}
+
+	/* Ensure variables cascade to nested wrappers */
+	.custom-theme-container-1 .editor-wrapper,
+	.custom-theme-container-1 .preview-wrapper {
+		--color-primary: #0d9488;
+		--color-primary-dark: #0f766e;
+		--color-secondary: #06b6d4;
+		--color-background: #f0fdfa;
+		--color-foreground: #134e4a;
+		--color-border: #a7f3d0;
+		--color-muted: #d1fae5;
+		--codeblock-bg: #ecfdf5;
+		--codeblock-text: #064e3b;
+		--blockquote-color: #0d7377;
+		--blockquote-border: #14b8a6;
+		--border-color: #a7f3d0;
+		--code-bg: #d1fae5;
+		--color-input: #ccf0ee;
+		--table-border: #a7f3d0;
+	}
+
+	.custom-theme-container-2 .editor-wrapper,
+	.custom-theme-container-2 .preview-wrapper {
+		--color-primary: #7c3aed;
+		--color-primary-dark: #6d28d9;
+		--color-secondary: #a78bfa;
+		--color-background: #faf5ff;
+		--color-foreground: #581c87;
+		--color-border: #e9d5ff;
+		--color-muted: #f3e8ff;
+		--codeblock-bg: #ede9fe;
+		--codeblock-text: #4c1d95;
+		--blockquote-color: #6b21a8;
+		--blockquote-border: #a855f7;
+		--border-color: #e9d5ff;
+		--code-bg: #f3e8ff;
+		--color-input: #ede9fe;
+		--table-border: #e9d5ff;
 	}
 
 	/* Responsive */

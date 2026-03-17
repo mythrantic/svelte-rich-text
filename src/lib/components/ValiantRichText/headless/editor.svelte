@@ -109,17 +109,13 @@
 				'theme-inherit'
 			);
 
-			// Only add theme class if not inheriting
-			// When theme is 'inherit', the editor will use the parent's CSS variables
-			if (theme !== 'inherit') {
-				element.classList.add(`theme-${theme}-${themeMode}`);
-				element.setAttribute('data-theme', theme);
-				element.setAttribute('data-mode', themeMode);
-			} else {
-				// For inherit, still set data attributes but don't add theme class
-				element.setAttribute('data-theme', 'inherit');
-				element.setAttribute('data-mode', themeMode);
-			}
+			// Add appropriate theme class
+			// For specific themes, add the full theme class
+			// For inherit, add theme-inherit class which provides fallback values
+			// but parent's CSS variables will cascade through and override them
+			element.classList.add(`theme-${theme}${theme === 'inherit' ? '' : `-${themeMode}`}`);
+			element.setAttribute('data-theme', theme);
+			element.setAttribute('data-mode', themeMode);
 		}
 	});
 
