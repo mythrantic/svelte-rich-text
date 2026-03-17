@@ -45,18 +45,15 @@
 	}
 
 	.demo-wrapper {
-		background-color: var(--color-background, #ffffff);
+		background-color: var(--color-background, #000);
 		z-index: 50;
 		margin: 3rem auto;
 		width: 100%;
-		max-width: 80rem;
-		border-radius: 0.375rem;
-		border: 1px dashed;
+		max-width: 95rem;
 	}
 
 	.editor-container {
 		overflow-y: scroll;
-		border: 1px solid;
 		padding-right: 0.5rem;
 		padding-left: 1.5rem;
 	}

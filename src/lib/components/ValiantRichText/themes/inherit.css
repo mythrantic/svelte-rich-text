@@ -1,0 +1,67 @@
+/* Inherit Theme - Inherits from host website */
+:root.theme-inherit {
+	/* These will be inherited from the host website or use fallback system colors */
+	--color-background: var(--host-bg, #ffffff);
+	--color-foreground: var(--host-fg, #000000);
+	--color-muted: var(--host-muted, #f5f5f5);
+	--color-muted-foreground: var(--host-muted-fg, #666666);
+	--color-primary: var(--host-primary, #3b82f6);
+	--color-primary-light: var(--host-primary-light, #60a5fa);
+	--color-primary-dark: var(--host-primary-dark, #1d4ed8);
+	--color-secondary: var(--host-secondary, #f5f5f5);
+	--color-secondary-foreground: var(--host-secondary-fg, #000000);
+	--color-accent: var(--host-accent, #3b82f6);
+	--color-accent-light: var(--host-accent-light, #60a5fa);
+	--color-accent-dark: var(--host-accent-dark, #1d4ed8);
+	--color-destructive: var(--host-destructive, #ef4444);
+	--color-input: var(--host-input, #f0f0f0);
+	--color-border: var(--host-border, #e0e0e0);
+
+	/* Semantic colors */
+	--blockquote-color: var(--host-blockquote, #666666);
+	--blockquote-border: var(--host-blockquote-border, #3b82f6);
+	--border-color: var(--host-border, #e0e0e0);
+	--border-color-hover: var(--host-border-hover, #ccc);
+	--code-bg: var(--host-code-bg, #f5f5f5);
+	--codeblock-bg: var(--host-codeblock-bg, #1e1e1e);
+	--table-border: var(--host-table-border, #e0e0e0);
+	--table-bg-selected: var(--host-table-selected, #e3f2fd);
+	--table-bg-hover: var(--host-table-hover, #f5f5f5);
+	--highlight-color: var(--host-highlight, #fffacd);
+	--highlight-border: var(--host-highlight-border, #ffd700);
+	--search-result-bg: var(--host-search-result, #ffeb3b);
+	--search-result-current-bg: var(--host-search-result-current, #ffd700);
+	--task-completed-color: var(--host-task-complete, #999999);
+}
+
+.valiant-editor.theme-inherit {
+	--color-background: var(--host-bg, #ffffff);
+	--color-foreground: var(--host-fg, #000000);
+	--color-muted: var(--host-muted, #f5f5f5);
+	--color-muted-foreground: var(--host-muted-fg, #666666);
+	--color-primary: var(--host-primary, #3b82f6);
+	--color-primary-light: var(--host-primary-light, #60a5fa);
+	--color-primary-dark: var(--host-primary-dark, #1d4ed8);
+	--color-secondary: var(--host-secondary, #f5f5f5);
+	--color-secondary-foreground: var(--host-secondary-fg, #000000);
+	--color-accent: var(--host-accent, #3b82f6);
+	--color-accent-light: var(--host-accent-light, #60a5fa);
+	--color-accent-dark: var(--host-accent-dark, #1d4ed8);
+	--color-destructive: var(--host-destructive, #ef4444);
+	--color-input: var(--host-input, #f0f0f0);
+	--color-border: var(--host-border, #e0e0e0);
+	--blockquote-color: var(--host-blockquote, #666666);
+	--blockquote-border: var(--host-blockquote-border, #3b82f6);
+	--border-color: var(--host-border, #e0e0e0);
+	--border-color-hover: var(--host-border-hover, #ccc);
+	--code-bg: var(--host-code-bg, #f5f5f5);
+	--codeblock-bg: var(--host-codeblock-bg, #1e1e1e);
+	--table-border: var(--host-table-border, #e0e0e0);
+	--table-bg-selected: var(--host-table-selected, #e3f2fd);
+	--table-bg-hover: var(--host-table-hover, #f5f5f5);
+	--highlight-color: var(--host-highlight, #fffacd);
+	--highlight-border: var(--host-highlight-border, #ffd700);
+	--search-result-bg: var(--host-search-result, #ffeb3b);
+	--search-result-current-bg: var(--host-search-result-current, #ffd700);
+	--task-completed-color: var(--host-task-complete, #999999);
+}

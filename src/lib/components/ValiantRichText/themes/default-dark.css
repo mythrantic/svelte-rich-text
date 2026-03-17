@@ -1,0 +1,70 @@
+/* Default Dark Theme - shadcn inspired with orange accent */
+:root.theme-default-dark {
+	/* Colors */
+	--color-background: #0f172a;
+	--color-foreground: #f8fafc;
+	--color-muted: #1e293b;
+	--color-muted-foreground: #94a3b8;
+	--color-primary: #f97316;
+	--color-primary-light: #fb923c;
+	--color-primary-dark: #ea580c;
+	--color-secondary: #1e293b;
+	--color-secondary-foreground: #f8fafc;
+	--color-accent: #f97316;
+	--color-accent-light: #fb923c;
+	--color-accent-dark: #ea580c;
+	--color-destructive: #ef4444;
+	--color-input: #1e293b;
+	--color-border: #334155;
+
+	/* Semantic colors */
+	--blockquote-color: #cbd5e1;
+	--blockquote-border: #f97316;
+	--border-color: #334155;
+	--border-color-hover: #475569;
+	--code-bg: #1e293b;
+	--codeblock-bg: #0f172a;
+	--table-border: #334155;
+	--table-bg-selected: #1e293b;
+	--table-bg-hover: #1e293b;
+	--highlight-color: #7c2d12;
+	--highlight-border: #f97316;
+	--search-result-bg: #92400e;
+	--search-result-current-bg: #b45309;
+	--task-completed-color: #64748b;
+}
+
+/* Apply to editor container */
+.valiant-editor.theme-default-dark {
+	--color-background: #0f172a;
+	--color-foreground: #f8fafc;
+	--color-muted: #1e293b;
+	--color-muted-foreground: #94a3b8;
+	--color-primary: #f97316;
+	--color-primary-light: #fb923c;
+	--color-primary-dark: #ea580c;
+	--color-secondary: #1e293b;
+	--color-secondary-foreground: #f8fafc;
+	--color-accent: #f97316;
+	--color-accent-light: #fb923c;
+	--color-accent-dark: #ea580c;
+	--color-destructive: #ef4444;
+	--color-input: #1e293b;
+	--color-border: #334155;
+	--blockquote-color: #cbd5e1;
+	--blockquote-border: #f97316;
+	--border-color: #334155;
+	--border-color-hover: #475569;
+	--code-bg: #1e293b;
+	--codeblock-bg: #0f172a;
+	--table-border: #334155;
+	--table-bg-selected: #1e293b;
+	--table-bg-hover: #1e293b;
+	--highlight-color: #7c2d12;
+	--highlight-border: #f97316;
+	--search-result-bg: #92400e;
+	--search-result-current-bg: #b45309;
+	--task-completed-color: #64748b;
+	background-color: #0f172a;
+	color: #f8fafc;
+}

@@ -1,0 +1,67 @@
+/* Professional Light Theme - Blue accent */
+:root.theme-professional-light {
+	/* Colors */
+	--color-background: #ffffff;
+	--color-foreground: #1f2937;
+	--color-muted: #f3f4f6;
+	--color-muted-foreground: #6b7280;
+	--color-primary: #2563eb;
+	--color-primary-light: #3b82f6;
+	--color-primary-dark: #1d4ed8;
+	--color-secondary: #f3f4f6;
+	--color-secondary-foreground: #1f2937;
+	--color-accent: #2563eb;
+	--color-accent-light: #3b82f6;
+	--color-accent-dark: #1d4ed8;
+	--color-destructive: #ef4444;
+	--color-input: #f0f0f0;
+	--color-border: #e5e7eb;
+
+	/* Semantic colors */
+	--blockquote-color: #4b5563;
+	--blockquote-border: #2563eb;
+	--border-color: #e5e7eb;
+	--border-color-hover: #d1d5db;
+	--code-bg: #f3f4f6;
+	--codeblock-bg: #1f2937;
+	--table-border: #e5e7eb;
+	--table-bg-selected: #dbeafe;
+	--table-bg-hover: #f0f9ff;
+	--highlight-color: #dbeafe;
+	--highlight-border: #3b82f6;
+	--search-result-bg: #93c5fd;
+	--search-result-current-bg: #3b82f6;
+	--task-completed-color: #9ca3af;
+}
+
+.valiant-editor.theme-professional-light {
+	--color-background: #ffffff;
+	--color-foreground: #1f2937;
+	--color-muted: #f3f4f6;
+	--color-muted-foreground: #6b7280;
+	--color-primary: #2563eb;
+	--color-primary-light: #3b82f6;
+	--color-primary-dark: #1d4ed8;
+	--color-secondary: #f3f4f6;
+	--color-secondary-foreground: #1f2937;
+	--color-accent: #2563eb;
+	--color-accent-light: #3b82f6;
+	--color-accent-dark: #1d4ed8;
+	--color-destructive: #ef4444;
+	--color-input: #f0f0f0;
+	--color-border: #e5e7eb;
+	--blockquote-color: #4b5563;
+	--blockquote-border: #2563eb;
+	--border-color: #e5e7eb;
+	--border-color-hover: #d1d5db;
+	--code-bg: #f3f4f6;
+	--codeblock-bg: #1f2937;
+	--table-border: #e5e7eb;
+	--table-bg-selected: #dbeafe;
+	--table-bg-hover: #f0f9ff;
+	--highlight-color: #dbeafe;
+	--highlight-border: #3b82f6;
+	--search-result-bg: #93c5fd;
+	--search-result-current-bg: #3b82f6;
+	--task-completed-color: #9ca3af;
+}
