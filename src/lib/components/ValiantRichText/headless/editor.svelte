@@ -109,12 +109,10 @@
 				'theme-inherit'
 			);
 
-			// Add new theme class if theme is not 'inherit'. if it's 'inherit', we rely on the parent element's theme and don't add any class
-			if (theme !== 'inherit') {
-				element.classList.add(`theme-${theme}-${themeMode}`);
-				element.setAttribute('data-theme', theme);
-				element.setAttribute('data-mode', themeMode);
-			}
+			// Always add the theme class to apply CSS variables
+			element.classList.add(`theme-${theme}-${themeMode}`);
+			element.setAttribute('data-theme', theme);
+			element.setAttribute('data-mode', themeMode);
 		}
 	});
 
@@ -160,5 +158,5 @@
 			focusEditor(editor, event);
 		}
 	}}
-	class={`edra-editor ${className}`}
+	class={`edra-editor valiant-editor ${className}`}
 ></div>

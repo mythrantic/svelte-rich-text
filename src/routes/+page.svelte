@@ -52,7 +52,6 @@
 		<h2 class="section-title">Try It Live</h2>
 		<p class="demo-subtitle">Experience the editor in action. Start typing to see the magic!</p>
 
-
 		<div class="demo-container">
 			<div class="demo-editor valiant-editor">
 				<h3>Interactive Editor</h3>
@@ -65,6 +64,28 @@
 				<h3>Read-Only Preview</h3>
 				<div class="preview-wrapper valiant-editor">
 					<ValiantRichText {content} editable={false} />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Theme Props Section -->
+	<section class="demo">
+		<h2 class="section-title">Built-In Theme Support</h2>
+		<p class="demo-subtitle">Pass theme directly via props - no wrapper needed!</p>
+
+		<div class="demo-container">
+			<div class="demo-editor valiant-editor">
+				<h3>Modern Dark Theme (Direct Props)</h3>
+				<div class="editor-wrapper valiant-editor">
+					<ValiantRichText {content} editable={true} theme="modern" themeMode="dark" />
+				</div>
+			</div>
+
+			<div class="demo-preview valiant-editor">
+				<h3>Professional Light Theme (Direct Props)</h3>
+				<div class="preview-wrapper valiant-editor">
+					<ValiantRichText {content} editable={false} theme="professional" themeMode="light" />
 				</div>
 			</div>
 		</div>

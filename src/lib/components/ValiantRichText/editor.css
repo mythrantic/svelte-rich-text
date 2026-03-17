@@ -22,7 +22,7 @@
 	--border-color: #e2e8f0;
 	--border-color-hover: #cbd5e1;
 	--code-bg: #f1f5f9;
-	--codeblock-bg: #1e293b;
+	--codeblock-bg: #f8fafc;
 	--table-border: #e2e8f0;
 	--table-bg-selected: #f0f9ff;
 	--table-bg-hover: #f8fafc;
@@ -528,4 +528,74 @@ input[type='checkbox'] {
 	background: var(--code-bg);
 	color: var(--color-destructive);
 	border: 1px solid darkred;
+}
+
+/* Code Block UI Controls */
+.code-wrapper-select {
+	padding: 0.375rem 0.5rem;
+	border-radius: 0.375rem;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	background-color: rgba(0, 0, 0, 0.05);
+	color: inherit;
+	font-size: 0.875rem;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
+	font-family: inherit;
+}
+
+.code-wrapper-select:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+.code-wrapper-select:focus {
+	outline: none;
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Copy Button */
+.code-wrapper-copy {
+	padding: 0.375rem 0.75rem;
+	border-radius: 0.375rem;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	background-color: rgba(0, 0, 0, 0.05);
+	color: inherit;
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease;
+	font-family: inherit;
+}
+
+.code-wrapper-copy:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+.code-wrapper-copy:active {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.code-wrapper-copy-text {
+	white-space: nowrap;
+}
+
+.code-wrapper-copy-text.copied {
+	color: var(--color-primary);
+	font-weight: 600;
+}
+
+/* Code block text - always dark for readability on light background */
+.code-wrapper {
+	color: #1e1e1e;
+}
+
+.code-wrapper code {
+	color: #1e1e1e;
+	background-color: transparent;
 }
