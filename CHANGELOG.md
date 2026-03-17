@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-rich-text
 
+## 1.2.0
+
+### Minor Changes
+
+- 9beeb65: better toolbar and a skafold for a themeing system
+
 ## 1.1.0
 
 ### Minor Changes
